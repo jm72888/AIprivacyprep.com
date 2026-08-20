@@ -16,7 +16,7 @@ export function QuizPage() {
 
   const [questions, setQuestions] = useState<Question[] | null>(null)
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [selectedIndex, setSelectedIndex] = useState<number | null>(null)
+  const [submittedIndex, setSubmittedIndex] = useState<number | null>(null)
   const [answers, setAnswers] = useState<AttemptAnswer[]>([])
   const [startedAt] = useState(() => new Date().toISOString())
 
@@ -32,9 +32,9 @@ export function QuizPage() {
 
   const current = questions[currentIndex]
 
-  function handleSelect(choiceIndex: number) {
-    if (selectedIndex !== null) return
-    setSelectedIndex(choiceIndex)
+  function handleSubmit(choiceIndex: number) {
+    if (submittedIndex !== null) return
+    setSubmittedIndex(choiceIndex)
     setAnswers((prev) => [
       ...prev,
       {
@@ -49,7 +49,7 @@ export function QuizPage() {
   function handleNext() {
     if (currentIndex + 1 < questions!.length) {
       setCurrentIndex((i) => i + 1)
-      setSelectedIndex(null)
+      setSubmittedIndex(null)
       return
     }
 
@@ -65,6 +65,10 @@ export function QuizPage() {
     navigate(`/quiz/${certId}/results`, { state: { attempt } })
   }
 
+  function handleBack() {
+    navigate(`/quiz/${certId}/setup`)
+  }
+
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
       <QuestionCard
@@ -72,9 +76,10 @@ export function QuizPage() {
         question={current}
         index={currentIndex}
         total={questions.length}
-        selectedIndex={selectedIndex}
-        onSelect={handleSelect}
+        submittedIndex={submittedIndex}
+        onSubmit={handleSubmit}
         onNext={handleNext}
+        onBack={handleBack}
       />
     </div>
   )

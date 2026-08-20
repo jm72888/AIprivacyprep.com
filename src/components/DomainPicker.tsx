@@ -26,7 +26,7 @@ export function DomainPicker({
               onChange={() => onToggle(domain.id)}
               className="h-4 w-4 accent-accent"
             />
-            <span className="text-sm font-medium">{domain.name}</span>
+            <span className="text-[1.09375rem] font-medium">{domain.name}</span>
           </label>
         )
       })}

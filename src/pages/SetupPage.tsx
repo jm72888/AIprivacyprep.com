@@ -5,6 +5,17 @@ import { Button } from '../components/Button'
 import { localDataClient } from '../lib/localDataClient'
 import type { Certification, Domain } from '../lib/types'
 
+function CertName({ name }: { name: string }) {
+  const slash = name.indexOf('/')
+  if (slash === -1) return <>{name}</>
+  return (
+    <>
+      {name.slice(0, slash + 1)}
+      <span className="text-accent">{name.slice(slash + 1)}</span>
+    </>
+  )
+}
+
 export function SetupPage() {
   const { certId = '' } = useParams()
   const navigate = useNavigate()
@@ -50,12 +61,10 @@ export function SetupPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
-      <Link to="/" className="font-mono text-xs uppercase tracking-wider text-ink/70 hover:text-accent">
-        &larr; Back
-      </Link>
-      <p className="mt-4 font-mono text-xs uppercase tracking-widest text-accent">{certification.code}</p>
-      <h1 className="mt-1 font-display text-3xl italic">{certification.name}</h1>
-      <p className="mt-2 text-sm text-ink/70">Choose which domains to practice.</p>
+      <h1 className="font-display text-[2.34375rem] italic">
+        <CertName name={certification.name} />
+      </h1>
+      <p className="mt-2 text-[1.09375rem] text-ink/70">Choose which domains to practice.</p>
 
       <div className="mt-6 flex items-center justify-between border-t border-rule/30 pt-4">
         <span className="font-mono text-xs uppercase tracking-wide text-ink/70">
@@ -70,7 +79,10 @@ export function SetupPage() {
         <DomainPicker domains={domains} selected={selected} onToggle={toggleDomain} />
       </div>
 
-      <div className="mt-8 flex justify-end">
+      <div className="mt-8 flex items-center justify-between">
+        <Link to="/">
+          <Button variant="secondary">&larr; Back</Button>
+        </Link>
         <Button disabled={selected.size === 0} onClick={startQuiz}>
           Start quiz
         </Button>

@@ -11,17 +11,24 @@ colors:
   good-soft: "#e2e8df"
   bad: "#b3271e"
   bad-soft: "#f1ded9"
+  select: "#2563eb"
+  select-soft: "#eff6ff"
   hero: "#161514"
 typography:
   display:
     fontFamily: "Newsreader, ui-serif, Georgia, serif"
-    fontSize: "clamp(1.5rem, 4vw, 3.75rem)"
+    fontSize: "3.375rem"
     fontWeight: 400
     lineHeight: 1.1
     letterSpacing: "-0.01em"
+  title:
+    fontFamily: "Newsreader, ui-serif, Georgia, serif"
+    fontSize: "1.875rem"
+    fontWeight: 400
+    lineHeight: 1.2
   body:
     fontFamily: "Newsreader, ui-serif, Georgia, serif"
-    fontSize: "1rem"
+    fontSize: "1.09375rem"
     fontWeight: 400
     lineHeight: 1.6
   label:
@@ -93,6 +100,7 @@ A gazette palette: aged paper, near-black ink, and one red ink-stamp accent. No 
 ### Semantic
 - **Approved Green** (`#2f5233` / soft `#e2e8df`): correct answers, domain scores ≥70%.
 - **Overruled Red** (`#b3271e` / soft `#f1ded9`): incorrect answers, domain scores <70%. Intentionally the same hex as the primary accent — a stamp is a stamp, whether it is marking a CTA or marking a wrong answer.
+- **Selection Blue** (`#2563eb` / soft `#eff6ff`): the one deliberate exception to The One Stamp Rule below. Marks a choice the visitor has picked but not yet submitted, on the question screen only. Never used for a graded verdict (that's always green or red) and never used outside the pending pre-submit state.
 
 ### Named Rules
 **The One Stamp Rule.** Red appears in exactly one register per screen: either the single primary action, or a single correctness verdict. It never decorates.
@@ -105,13 +113,16 @@ A gazette palette: aged paper, near-black ink, and one red ink-stamp accent. No 
 **Character:** Newsreader carries the reading register — this is prose meant to be read at length, the way a regulation is read. IBM Plex Mono marks anything that behaves like a citation, docket number, or instrument readout: it signals "this is structural metadata," never body content.
 
 ### Hierarchy
-- **Display** (400, italic, `text-4xl`–`text-6xl`): Hero headline and page/result headlines. Italic is load-bearing — it's the one typographic accent the brief called for.
-- **Title** (400, italic, `text-xl`–`text-3xl`): section and card headings (cert names, "Breakdown by domain").
-- **Body** (400, `text-sm`–`text-base`, line-height 1.6): explanatory prose, question prompts, notices. Max measure ~65ch via `max-w-2xl` containers.
-- **Label** (500, `text-xs`, tracking 0.08em, uppercase): docket numbers, cert codes, section markers (`§ 1 of 10`), timestamps.
+Two responsive steps (mobile → `sm:`) at each level, `*1.5` for Display and `*1.25` for Title/Body over their pre-redesign baseline:
+- **Display** (400, italic, `3.375rem` → `sm:4.5rem`): Hero headline only. Italic is load-bearing here — it's the one typographic accent the brief called for.
+- **Title-lg** (400, italic, `1.875rem` → `sm:2.34375rem`): ValueProp headline, domain-setup headline.
+- **Title-md** (400, non-italic on the question screen only, `1.5625rem` → `sm:1.875rem`): the question prompt (QuestionCard `h2`). Italic Newsreader at this size read as calligraphic rather than readable, so this one heading stays upright while every other title keeps the italic accent.
+- **Title-sm** (400, italic, `1.40625rem`, no responsive step): cert-row names in the docket list.
+- **Body** (400, `1.09375rem` → `sm:1.25rem` where paired with a title, otherwise `1.09375rem` flat, line-height 1.6): explanatory prose, question prompts, choice text, notices. Max measure ~65ch via `max-w-2xl` containers.
+- **Label** (500, `0.75rem`, tracking 0.08em, uppercase): docket numbers, cert codes, section markers (`§ 1 of 10`), timestamps. Deliberately not part of the body/title size bump — labels stay small and functional.
 
 ### Named Rules
-**The Italic-Is-Accent Rule.** Italic Newsreader marks a heading as the display voice; regular-weight Newsreader is always body. No third typographic register exists.
+**The Italic-Is-Accent Rule.** Italic Newsreader marks a heading as the display voice; regular-weight Newsreader is always body. The question prompt is the sole named exception — see Hierarchy above.
 
 ## Layout
 
@@ -123,7 +134,7 @@ Single-column, `max-w-2xl` (Hero uses `max-w-3xl`) containers throughout, center
 
 ## Shapes
 
-Sharp corners everywhere (`0px` radius) — cards, buttons, inputs, containers. Borders are 1px hairlines in `rule` gray or `ink`; the one exception is the ink-stamp mark on question feedback, which uses a heavier 2px border and a slight rotation to read as a physical stamp rather than a UI chip.
+Sharp corners everywhere (`0px` radius) — cards, buttons, inputs, containers. Borders are 1px hairlines in `rule` gray or `ink`; the one exception is the Verdict Box on question feedback, which uses a heavier 2px border to stand apart as a determination rather than a UI chip.
 
 ## Components
 
@@ -143,8 +154,11 @@ Sharp corners everywhere (`0px` radius) — cards, buttons, inputs, containers. 
 ### List Rows (Docket Rows) — signature component
 The certification picker, domain picker, domain breakdown, and history list all share one grammar: a horizontal row, hairline `border-t` divider (first row has none), a mono label or index on the left, content in the middle, and an optional mono value or arrow on the right. This replaced the original per-item card with a colored left accent bar; the docket-row list is what makes many small items feel like a table of contents rather than a stack of cards.
 
-### Stamp Mark (signature component)
-Correct/incorrect feedback on a question renders as a small rotated (`-3deg`) 2px-bordered label reading "CORRECT" or "OVERRULED" in mono uppercase, in `good` or `bad` color — a literal ink-stamp motif standing in for a green/red pill.
+### Verdict Box (signature component)
+Correct/incorrect feedback on a question renders as a sharp-cornered, text-aligned 2px-bordered box reading "CORRECT" or "INCORRECT" in mono uppercase, in `good` or `bad` color. (An earlier rotated ink-stamp treatment was tried and rejected as too decorative — this box is deliberately plain and legible.)
+
+### Choice States (question screen)
+A choice button has three states: default (`ink/15` border), pending-selected — chosen but not yet submitted (`select` border and `select-soft` background, see Selection Blue above) — and graded, shown only after Submit (`good`/`good-soft` on the correct choice, `bad`/`bad-soft` on a wrong selected choice). Selecting a choice never grades it; only the Submit button does.
 
 ### Instrument Scale (signature component)
 Domain accuracy in the results breakdown renders as a graduated horizontal scale (tick marks every 10%) with a filled region up to the score and a single marker line at the exact percentage, rather than a rounded progress bar — borrowed from oscilloscope/instrument-readout precision.
@@ -161,7 +175,9 @@ Domain accuracy in the results breakdown renders as a graduated horizontal scale
 - **Don't** reintroduce rounded corners, pill-shaped buttons, or drop shadows — they belong to the previous "warm editorial" world this redesign replaced.
 - **Don't** use a colored left `border-l` accent bar on cards — replaced system-wide by hairline row dividers and mono docket numbers.
 - **Don't** use `text-ink` below 70% opacity on the `paper` background — it fails WCAG AA contrast at this system's text sizes (verified: `ink/40` ≈2.5:1, `ink/50` ≈3.2:1, `ink/60` ≈4.3:1, all below the 4.5:1 minimum; `ink/70` ≈6:1 passes).
-- **Don't** add a second saturated accent color; the red ink-stamp is deliberately the only one.
+- **Don't** add a second saturated accent color beyond the red/green/blue semantic trio; nothing decorative gets its own hue.
+- **Don't** rotate the Verdict Box or style it as a pill/chip — it was deliberately changed from a rotated ink-stamp to a plain sharp-cornered box.
+- **Don't** grade a choice on click. Selecting only sets the pending (blue) state; only the Submit action reveals correct/incorrect.
 
 ## Known gaps (disclosed, not silently dropped)
 

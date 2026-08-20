@@ -14,6 +14,8 @@
   --color-good-soft: #e2e8df;
   --color-bad: #b3271e;
   --color-bad-soft: #f1ded9;
+  --color-select: #2563eb;
+  --color-select-soft: #eff6ff;
 
   --color-hero: #161514;
 }
@@ -32,5 +34,16 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes blink-cursor {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
   }
 }
