@@ -7,8 +7,8 @@ colors:
   rule: "#8a8578"
   accent: "#b3271e"
   accent-soft: "#f1ded9"
-  good: "#2f5233"
-  good-soft: "#e2e8df"
+  good: "#166534"
+  good-soft: "#dcfce7"
   bad: "#b3271e"
   bad-soft: "#f1ded9"
   select: "#2563eb"
@@ -98,7 +98,7 @@ A gazette palette: aged paper, near-black ink, and one red ink-stamp accent. No 
 - **Cover-Sheet Black** (`#161514`): the Hero's full-bleed background, standing in for a docket cover sheet.
 
 ### Semantic
-- **Approved Green** (`#2f5233` / soft `#e2e8df`): correct answers, domain scores ≥70%.
+- **Approved Green** (`#166534` / soft `#dcfce7`): correct answers, domain scores ≥70%. Deliberately more saturated than the original muted olive tone — bumped for visibility on the correct-choice highlight and Verdict Box.
 - **Overruled Red** (`#b3271e` / soft `#f1ded9`): incorrect answers, domain scores <70%. Intentionally the same hex as the primary accent — a stamp is a stamp, whether it is marking a CTA or marking a wrong answer.
 - **Selection Blue** (`#2563eb` / soft `#eff6ff`): the one deliberate exception to The One Stamp Rule below. Marks a choice the visitor has picked but not yet submitted, on the question screen only. Never used for a graded verdict (that's always green or red) and never used outside the pending pre-submit state.
 
