@@ -8,8 +8,8 @@ export function Hero() {
   return (
     <header className="bg-hero px-6 py-16 sm:py-24">
       <div className="mx-auto max-w-3xl">
-        <h1 className="font-display text-[3.375rem] italic tracking-tight text-paper sm:text-[4.5rem]">
-          <span className="text-accent not-italic">&sect;</span> CIPP &middot; CIPP/E &middot; AIGP
+        <h1 className="font-display text-[2rem] italic tracking-tight text-paper sm:text-[2.75rem]">
+          <span className="text-accent not-italic">&sect;</span> CIPP/<span className="text-accent">US</span> &middot; CIPP/<span className="text-accent">E</span> &middot; AIGP
         </h1>
         <div className="mt-6 border-t border-paper/20" />
         <div className="mt-6 grid gap-6 sm:grid-cols-2">

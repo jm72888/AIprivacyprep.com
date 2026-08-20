@@ -27,7 +27,7 @@ export function ValueProp() {
   return (
     <section className="mx-auto max-w-2xl border-b border-rule/30 px-6 pb-10 pt-12">
       <p className="font-mono text-xs uppercase tracking-widest text-accent">Notice</p>
-      <h2 className="mt-2 font-display text-[1.875rem] italic sm:text-[2.34375rem]">
+      <h2 className="mt-2 font-display text-[1.625rem] italic sm:text-[2rem]">
         Certification isn&apos;t cheap. Practice here for free.
       </h2>
       <p className="mt-4 text-[1.09375rem] leading-relaxed text-ink/70 sm:text-[1.25rem]">
