@@ -1,4 +1,4 @@
-import { PillButton } from './PillButton'
+import { Button } from './Button'
 
 function scrollToCertifications() {
   document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })
@@ -6,39 +6,32 @@ function scrollToCertifications() {
 
 export function Hero() {
   return (
-    <header className="relative overflow-hidden bg-hero px-6 py-20 sm:py-28">
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 400 400"
-        className="pointer-events-none absolute -left-32 top-1/2 h-[28rem] w-[28rem] -translate-y-1/2 text-hero-line/70 sm:-left-24"
-        fill="none"
-      >
-        <path
-          d="M40 260 C 20 150, 90 40, 210 40 C 330 40, 370 130, 320 200 C 280 255, 190 260, 170 200 C 155 155, 200 120, 240 140"
-          stroke="currentColor"
-          strokeWidth="14"
-          strokeLinecap="round"
-        />
-      </svg>
-
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-        <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
-          Study for CIPP &amp; <em className="text-hero-line italic">AIGP</em>
-        </h1>
-        <p className="max-w-xl text-base text-white/70 sm:text-lg">
-          Practice multiple-choice questions for the IAPP&rsquo;s CIPP/US,
-          CIPP/E, and AIGP certifications &mdash; Certified Information
-          Privacy Professional and Artificial Intelligence Governance
-          Professional &mdash; with instant feedback and explanations for
-          every answer.
+    <header className="bg-hero px-6 py-16 sm:py-24">
+      <div className="mx-auto max-w-3xl">
+        <p className="font-mono text-xs uppercase tracking-widest text-paper/60">
+          Practice Docket &middot; No. 2026&ndash;01
         </p>
-        <PillButton
-          variant="secondary"
-          onClick={scrollToCertifications}
-          className="mt-2"
-        >
-          Start practicing free
-        </PillButton>
+        <h1 className="mt-4 font-display text-4xl italic tracking-tight text-paper sm:text-5xl">
+          <span className="text-accent not-italic">&sect;</span> CIPP &middot; CIPP/E &middot; AIGP
+        </h1>
+        <div className="mt-6 border-t border-paper/20" />
+        <div className="mt-6 grid gap-6 sm:grid-cols-2">
+          <p className="text-sm leading-relaxed text-paper/70 sm:text-base">
+            Practice multiple-choice questions for the IAPP&rsquo;s CIPP/US,
+            CIPP/E, and AIGP certifications &mdash; Certified Information
+            Privacy Professional and Artificial Intelligence Governance
+            Professional &mdash; with an explanation issued after every
+            answer.
+          </p>
+          <p className="text-sm leading-relaxed text-paper/70 sm:text-base">
+            No account, no email, no filing required. Public determinations
+            are session-only; the practitioner of record keeps a durable
+            docket of past attempts.
+          </p>
+        </div>
+        <Button variant="invert" onClick={scrollToCertifications} className="mt-8">
+          &sect; Begin practicing
+        </Button>
       </div>
     </header>
   )

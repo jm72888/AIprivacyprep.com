@@ -10,14 +10,14 @@ export function DomainPicker({
   onToggle: (domainId: string) => void
 }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div className="border-t border-rule/40">
       {domains.map((domain) => {
         const checked = selected.has(domain.id)
         return (
           <label
             key={domain.id}
-            className={`flex cursor-pointer items-center gap-3 rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:duration-75 ${
-              checked ? 'border-accent' : 'border-ink/10 hover:border-accent/50'
+            className={`flex cursor-pointer items-center gap-3 border-b border-rule/40 px-3 py-3 transition-colors duration-150 ease-out ${
+              checked ? 'bg-accent-soft/30' : 'hover:bg-accent-soft/10'
             }`}
           >
             <input

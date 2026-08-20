@@ -9,22 +9,21 @@ export function HomePage() {
     <div>
       <Hero />
       <ValueProp />
-      <main className="mx-auto max-w-5xl px-6 py-12">
-        <p className="mb-6 text-center text-sm text-ink/70">
-          No account, no email, no time limit &mdash; just pick a certification
-          and go.
+      <main className="mx-auto max-w-2xl px-6 py-12">
+        <p className="font-mono text-xs uppercase tracking-widest text-ink/70">
+          Docket &middot; Table of Contents
         </p>
-        <div id="certifications" className="grid gap-6 sm:grid-cols-3">
-          {certifications.map((cert) => (
-            <CertCard key={cert.id} certification={cert} />
+        <div id="certifications" className="mt-4">
+          {certifications.map((cert, index) => (
+            <CertCard key={cert.id} certification={cert} index={index} />
           ))}
         </div>
-        <div className="mt-10 text-center">
+        <div className="mt-10 border-t border-rule/30 pt-6 text-center">
           <Link
             to="/history"
-            className="text-sm text-ink/70 underline decoration-ink/20 underline-offset-4 transition-colors duration-150 hover:text-accent"
+            className="font-mono text-xs uppercase tracking-wider text-ink/70 underline decoration-ink/20 underline-offset-4 transition-colors duration-150 hover:text-accent"
           >
-            View your practice history
+            View practitioner docket
           </Link>
         </div>
       </main>

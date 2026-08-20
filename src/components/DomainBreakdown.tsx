@@ -1,28 +1,43 @@
 import type { DomainScore } from '../lib/types'
 
+function Scale({ pct, weak }: { pct: number; weak: boolean }) {
+  const ticks = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+  return (
+    <div className="relative mt-2 h-4 border border-rule/50">
+      <div
+        className={`absolute inset-y-0 left-0 ${weak ? 'bg-bad-soft' : 'bg-good-soft'}`}
+        style={{ width: `${pct}%` }}
+      />
+      {ticks.map((t) => (
+        <div
+          key={t}
+          className="absolute top-0 h-full border-l border-rule/40"
+          style={{ left: `${t}%` }}
+        />
+      ))}
+      <div
+        className={`absolute top-0 h-full w-px ${weak ? 'bg-bad' : 'bg-good'}`}
+        style={{ left: `${pct}%` }}
+      />
+    </div>
+  )
+}
+
 export function DomainBreakdown({ scores }: { scores: DomainScore[] }) {
   return (
-    <div className="flex flex-col gap-3">
+    <div>
       {scores.map((score) => {
         const pct = score.total > 0 ? Math.round((score.correct / score.total) * 100) : 0
         const isWeak = pct < 70
         return (
-          <div
-            key={score.domainId}
-            className={`rounded-lg border-l-4 bg-white p-4 shadow-sm ${isWeak ? 'border-bad' : 'border-good'}`}
-          >
-            <div className="flex items-center justify-between gap-4">
+          <div key={score.domainId} className="border-t border-rule/30 py-4 first:border-t-0">
+            <div className="flex items-baseline justify-between gap-4">
               <span className="text-sm font-medium">{score.domainName}</span>
-              <span className="text-sm text-ink/70">
-                {score.correct}/{score.total} ({pct}%)
+              <span className="font-mono text-sm text-ink/70">
+                {score.correct}/{score.total} &middot; {pct}%
               </span>
             </div>
-            <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-paper">
-              <div
-                className={`h-full rounded-full ${isWeak ? 'bg-bad' : 'bg-good'}`}
-                style={{ width: `${pct}%` }}
-              />
-            </div>
+            <Scale pct={pct} weak={isWeak} />
           </div>
         )
       })}

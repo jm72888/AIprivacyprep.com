@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { DomainPicker } from '../components/DomainPicker'
-import { PillButton } from '../components/PillButton'
+import { Button } from '../components/Button'
 import { localDataClient } from '../lib/localDataClient'
 import type { Certification, Domain } from '../lib/types'
 
@@ -50,17 +50,18 @@ export function SetupPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
-      <Link to="/" className="text-sm text-ink/50 hover:text-ink/70">
+      <Link to="/" className="font-mono text-xs uppercase tracking-wider text-ink/70 hover:text-accent">
         &larr; Back
       </Link>
-      <h1 className="mt-4 font-display text-3xl">{certification.name}</h1>
+      <p className="mt-4 font-mono text-xs uppercase tracking-widest text-accent">{certification.code}</p>
+      <h1 className="mt-1 font-display text-3xl italic">{certification.name}</h1>
       <p className="mt-2 text-sm text-ink/70">Choose which domains to practice.</p>
 
-      <div className="mt-6 flex items-center justify-between">
-        <span className="text-sm font-medium text-ink/70">
+      <div className="mt-6 flex items-center justify-between border-t border-rule/30 pt-4">
+        <span className="font-mono text-xs uppercase tracking-wide text-ink/70">
           {selected.size} of {domains.length} domains selected
         </span>
-        <button onClick={toggleAll} className="text-sm font-medium text-accent hover:underline">
+        <button onClick={toggleAll} className="font-mono text-xs uppercase tracking-wide text-accent hover:underline">
           {allSelected ? 'Deselect all' : 'Select all'}
         </button>
       </div>
@@ -70,9 +71,9 @@ export function SetupPage() {
       </div>
 
       <div className="mt-8 flex justify-end">
-        <PillButton disabled={selected.size === 0} onClick={startQuiz}>
+        <Button disabled={selected.size === 0} onClick={startQuiz}>
           Start quiz
-        </PillButton>
+        </Button>
       </div>
     </div>
   )

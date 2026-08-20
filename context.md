@@ -57,6 +57,18 @@ Not in v1 (explicitly deferred): timed exam simulation mode.
   Visitors can only take quizzes.
 
 ## Visual Design
+Superseded. The original direction below (serif display + pill buttons +
+colored-accent-bar cards, sourced from `/Design` reference images) was
+replaced in a full visual redesign. The current, authoritative visual
+system lives in `DESIGN.md` at the project root — a "Regulatory Gazette"
+document-typesetting world (docket rows, ink-stamp verdicts, hairline
+rules, one red accent). The `/Design` reference images and the direction
+below are kept only as historical record of the pre-redesign look; do not
+use them for new visual work.
+
+<details>
+<summary>Original direction (pre-redesign, historical)</summary>
+
 Reference images added by the user in `/Design` (style inspiration only —
 not literal layouts to replicate):
 - `hero section.png` — landing page style: bold serif display headline with
@@ -67,11 +79,12 @@ not literal layouts to replicate):
 - `Scoring and results design.png` — same serif/sans pairing, bold section
   labels, clear visual hierarchy for structured content.
 
-Direction to carry into implementation: serif display headlines paired with
-clean sans body text, muted/neutral background palette, pill-shaped buttons,
-and card components with a colored accent bar (usable for question cards and
-results/domain-breakdown blocks). Not pulling in unrelated content (e.g. the
-pyramid diagram, video-call UI) — just the typographic and component style.
+Direction carried into the original implementation: serif display headlines
+paired with clean sans body text, muted/neutral background palette,
+pill-shaped buttons, and card components with a colored accent bar (usable
+for question cards and results/domain-breakdown blocks).
+
+</details>
 
 ## Open Questions for Implementation Phase
 - Exact domain breakdowns to use per certification (pull from current IAPP

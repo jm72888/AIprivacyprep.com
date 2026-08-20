@@ -1,17 +1,24 @@
 import { Link } from 'react-router-dom'
 import type { Certification } from '../lib/types'
 
-export function CertCard({ certification }: { certification: Certification }) {
+export function CertCard({ certification, index }: { certification: Certification; index: number }) {
   return (
     <Link
       to={`/quiz/${certification.id}/setup`}
-      className="group block rounded-lg border-l-4 border-accent bg-white p-6 shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:shadow-lg active:translate-y-0 active:shadow-sm active:duration-75"
+      className="group flex items-baseline gap-4 border-t border-rule/40 py-5 transition-colors duration-150 ease-out first:border-t-0 hover:bg-accent-soft/30 sm:gap-6 sm:px-2"
     >
-      <h2 className="font-display text-2xl">{certification.name}</h2>
-      <p className="mt-2 text-sm text-ink/70">{certification.description}</p>
-      <span className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent">
-        Start practicing
-        <span className="transition-transform duration-200 ease-out group-hover:translate-x-1">&rarr;</span>
+      <span className="font-mono text-sm text-ink/70">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+      <span className="font-mono text-xs uppercase tracking-wider text-accent">
+        {certification.code}
+      </span>
+      <span className="flex-1">
+        <span className="font-display text-lg italic">{certification.name}</span>
+        <span className="mt-1 block text-sm text-ink/70">{certification.description}</span>
+      </span>
+      <span className="self-center font-mono text-lg text-ink/50 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:text-accent">
+        &rarr;
       </span>
     </Link>
   )
