@@ -3,7 +3,8 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { QuestionCard } from '../components/QuestionCard'
 import { HomeLink } from '../components/HomeLink'
 import { localDataClient } from '../lib/localDataClient'
-import type { Attempt, AttemptAnswer, Question } from '../lib/types'
+import { certifications } from '../data/certifications'
+import type { Attempt, AttemptAnswer, Domain, Question } from '../lib/types'
 
 interface LocationState {
   domainIds?: string[]
@@ -16,6 +17,7 @@ export function QuizPage() {
   const domainIds = (location.state as LocationState | null)?.domainIds ?? []
 
   const [questions, setQuestions] = useState<Question[] | null>(null)
+  const [domains, setDomains] = useState<Domain[]>([])
   const [currentIndex, setCurrentIndex] = useState(0)
   const [submittedIndex, setSubmittedIndex] = useState<number | null>(null)
   const [answers, setAnswers] = useState<AttemptAnswer[]>([])
@@ -26,12 +28,19 @@ export function QuizPage() {
       navigate(`/quiz/${certId}/setup`, { replace: true })
       return
     }
-    localDataClient.getQuestions(certId, domainIds).then(setQuestions)
+    Promise.all([localDataClient.getQuestions(certId, domainIds), localDataClient.listDomains(certId)]).then(
+      ([questionList, domainList]) => {
+        setQuestions(questionList)
+        setDomains(domainList)
+      },
+    )
   }, [certId, domainIds, navigate])
 
   if (!questions) return null
 
   const current = questions[currentIndex]
+  const certification = certifications.find((c) => c.id === certId)
+  const currentDomain = domains.find((d) => d.id === current.domainId)
 
   function handleSubmit(choiceIndex: number) {
     if (submittedIndex !== null) return
@@ -72,8 +81,18 @@ export function QuizPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
-      <div className="mb-4">
+      <div className="mb-4 flex flex-wrap items-center gap-2">
         <HomeLink />
+        {certification && currentDomain && (
+          <>
+            <span className="text-ink/30" aria-hidden="true">
+              |
+            </span>
+            <span className="font-mono text-xs uppercase tracking-wider text-ink/70">
+              {certification.code} &middot; {currentDomain.name}
+            </span>
+          </>
+        )}
       </div>
       <QuestionCard
         key={current.id}

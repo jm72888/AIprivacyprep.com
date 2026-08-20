@@ -37,9 +37,9 @@ export function QuestionCard({
   return (
     <div className="animate-[fade-slide-up_250ms_ease-out] border border-rule/40 bg-paper p-6 sm:p-8">
       <p className="font-mono text-xs uppercase tracking-wide text-ink/70">
-        &sect; {index + 1} of {total}
+        <span className="text-accent">&sect;</span> {index + 1} of {total}
       </p>
-      <h2 className="mt-2 font-display text-[1.5625rem] sm:text-[1.875rem]">{question.prompt}</h2>
+      <h2 className="mt-2 font-display text-[1.40625rem] sm:text-[1.6875rem]">{question.prompt}</h2>
 
       <div className="mt-6 flex flex-col gap-2">
         {question.choices.map((choice, choiceIndex) => {

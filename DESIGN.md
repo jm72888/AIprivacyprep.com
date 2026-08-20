@@ -116,7 +116,7 @@ A gazette palette: aged paper, near-black ink, and one red ink-stamp accent. No 
 Two responsive steps (mobile → `sm:`) at each level, `*1.5` for Display and `*1.25` for Title/Body over their pre-redesign baseline:
 - **Display** (400, italic, `3.375rem` → `sm:4.5rem`): Hero headline only. Italic is load-bearing here — it's the one typographic accent the brief called for.
 - **Title-lg** (400, italic, `1.875rem` → `sm:2.34375rem`): ValueProp headline, domain-setup headline.
-- **Title-md** (400, non-italic on the question screen only, `1.5625rem` → `sm:1.875rem`): the question prompt (QuestionCard `h2`). Italic Newsreader at this size read as calligraphic rather than readable, so this one heading stays upright while every other title keeps the italic accent.
+- **Title-md** (400, non-italic on the question screen only, `1.40625rem` → `sm:1.6875rem`): the question prompt (QuestionCard `h2`). Italic Newsreader at this size read as calligraphic rather than readable, so this one heading stays upright while every other title keeps the italic accent. Sized 10% smaller than other Title-md uses elsewhere would suggest — question text specifically was asked to read a touch smaller than its surrounding chrome; answer-choice and explanation body text were left at the standard Body size.
 - **Title-sm** (400, italic, `1.40625rem`, no responsive step): cert-row names in the docket list.
 - **Body** (400, `1.09375rem` → `sm:1.25rem` where paired with a title, otherwise `1.09375rem` flat, line-height 1.6): explanatory prose, question prompts, choice text, notices. Max measure ~65ch via `max-w-2xl` containers.
 - **Label** (500, `0.75rem`, tracking 0.08em, uppercase): docket numbers, cert codes, section markers (`§ 1 of 10`), timestamps. Deliberately not part of the body/title size bump — labels stay small and functional.
@@ -170,6 +170,8 @@ Domain accuracy in the results breakdown renders as a graduated horizontal scale
 - **Do** use hairline `border-t`/`border-b` dividers between list items instead of card gaps or shadows.
 - **Do** keep the accent color to one register per screen (one CTA, or one correctness verdict) — see The One Stamp Rule.
 - **Do** italicize Newsreader for any display/title-level heading; this is the system's one typographic accent.
+- **Do** color a standalone `§` glyph `accent` (red) wherever it appears as a chrome marker — the Home link, the question progress counter, and any future docket/section marker share this convention.
+- **Do** pair `HomeLink` with a `|` separator and a mono `cert code · module name` label when a screen represents working through one module of a certification (currently: the question screen only) — this is the breadcrumb pattern, not a page title.
 
 ### Don't:
 - **Don't** reintroduce rounded corners, pill-shaped buttons, or drop shadows — they belong to the previous "warm editorial" world this redesign replaced.
