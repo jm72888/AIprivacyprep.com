@@ -114,7 +114,7 @@ A gazette palette: aged paper, near-black ink, and one red ink-stamp accent. No 
 
 ### Hierarchy
 Two responsive steps (mobile → `sm:`) at each level, `*1.5` for Display and `*1.25` for Title/Body over their pre-redesign baseline:
-- **Display** (400, italic, `2rem` → `sm:2.75rem`): Hero headline only. Italic is load-bearing here — it's the one typographic accent the brief called for. Sized down from an earlier, larger pass once the headline grew to "CIPP/US · CIPP/E · AIGP" and needed to hold one line.
+- **Display** (400, italic, `2.25rem` → `sm:3.25rem`): Hero headline only. Italic is load-bearing here — it's the one typographic accent the brief called for. Sized to hold "CIPP/US · CIPP/E · AIGP" on one line while spanning close to the full width of the hairline rule beneath it — bigger than a purely conservative one-line fit, smaller than the pass that wrapped.
 - **Title-lg** (400, italic, `2.34375rem`, no responsive step): domain-setup headline. ValueProp's headline is the one exception, sized smaller (`1.625rem` → `sm:2rem`) to keep "Certification isn't cheap. Practice here for free." on one line.
 - **Title-md** (400, non-italic on the question screen only, `1.40625rem` → `sm:1.6875rem`): the question prompt (QuestionCard `h2`). Italic Newsreader at this size read as calligraphic rather than readable, so this one heading stays upright while every other title keeps the italic accent. Sized 10% smaller than other Title-md uses elsewhere would suggest — question text specifically was asked to read a touch smaller than its surrounding chrome; answer-choice and explanation body text were left at the standard Body size.
 - **Title-sm** (400, italic, `1.40625rem`, no responsive step): cert-row names in the docket list.
