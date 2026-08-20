@@ -1,3 +1,9 @@
+import { PillButton } from './PillButton'
+
+function scrollToCertifications() {
+  document.getElementById('certifications')?.scrollIntoView({ behavior: 'smooth' })
+}
+
 export function Hero() {
   return (
     <header className="relative overflow-hidden bg-hero px-6 py-20 sm:py-28">
@@ -16,13 +22,23 @@ export function Hero() {
       </svg>
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
-        <h1 className="font-sans text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
-          Study for CIPP &amp; AIGP
+        <h1 className="font-display text-4xl font-extrabold tracking-tight text-white sm:text-6xl">
+          Study for CIPP &amp; <em className="text-hero-line italic">AIGP</em>
         </h1>
         <p className="max-w-xl text-base text-white/70 sm:text-lg">
-          Practice multiple-choice questions for CIPP/US, CIPP/E, and AIGP, with
-          instant feedback and explanations for every answer.
+          Practice multiple-choice questions for the IAPP&rsquo;s CIPP/US,
+          CIPP/E, and AIGP certifications &mdash; Certified Information
+          Privacy Professional and Artificial Intelligence Governance
+          Professional &mdash; with instant feedback and explanations for
+          every answer.
         </p>
+        <PillButton
+          variant="secondary"
+          onClick={scrollToCertifications}
+          className="mt-2"
+        >
+          Start practicing free
+        </PillButton>
       </div>
     </header>
   )

@@ -5,7 +5,7 @@ function StatChip({ label, value, accent = false }: { label: string; value: stri
         accent ? 'border-accent bg-accent-soft text-accent' : 'border-ink/15 bg-white text-ink/80'
       }`}
     >
-      <span className="font-semibold">{value}</span> <span className="text-ink/50">{label}</span>
+      <span className="font-semibold">{value}</span> <span className="text-ink/70">{label}</span>
     </div>
   )
 }
@@ -15,13 +15,11 @@ export function ValueProp() {
     <section className="mx-auto max-w-2xl px-6 pt-16 text-center">
       <h2 className="font-display text-2xl sm:text-3xl">Certification isn&apos;t cheap. Practice is free.</h2>
       <p className="mt-4 text-sm leading-relaxed text-ink/70 sm:text-base">
-        A CIPP exam — US, E, or any regional designation — costs $550. AIGP runs
-        $649 for IAPP members or $799 for non-members. Add optional extras like
-        annual IAPP membership (~$275&ndash;$295), textbooks ($75&ndash;$95),
-        digital practice exams (~$55), or a formal training course
-        ($995&ndash;$1,195) from the IAPP Certification Store, and prep can
-        easily top $1,000 before exam day. Get comfortable with the material
-        here first &mdash; it won&apos;t cost you anything.
+        Exam fees are just the start. Add optional extras like annual IAPP
+        membership (~$275&ndash;$295), textbooks ($75&ndash;$95), or digital
+        practice exams (~$55), and prep can easily top $1,000 before exam
+        day. Get comfortable with the material here first &mdash; it
+        won&apos;t cost you anything.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <StatChip value="$550" label="CIPP exam" />

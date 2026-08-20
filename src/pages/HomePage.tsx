@@ -10,7 +10,11 @@ export function HomePage() {
       <Hero />
       <ValueProp />
       <main className="mx-auto max-w-5xl px-6 py-12">
-        <div className="grid gap-6 sm:grid-cols-3">
+        <p className="mb-6 text-center text-sm text-ink/70">
+          No account, no email, no time limit &mdash; just pick a certification
+          and go.
+        </p>
+        <div id="certifications" className="grid gap-6 sm:grid-cols-3">
           {certifications.map((cert) => (
             <CertCard key={cert.id} certification={cert} />
           ))}
@@ -18,7 +22,7 @@ export function HomePage() {
         <div className="mt-10 text-center">
           <Link
             to="/history"
-            className="text-sm text-ink/50 underline decoration-ink/20 underline-offset-4 transition-colors duration-150 hover:text-accent"
+            className="text-sm text-ink/70 underline decoration-ink/20 underline-offset-4 transition-colors duration-150 hover:text-accent"
           >
             View your practice history
           </Link>
