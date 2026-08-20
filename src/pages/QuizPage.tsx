@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { QuestionCard } from '../components/QuestionCard'
+import { HomeLink } from '../components/HomeLink'
 import { localDataClient } from '../lib/localDataClient'
 import type { Attempt, AttemptAnswer, Question } from '../lib/types'
 
@@ -71,6 +72,9 @@ export function QuizPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
+      <div className="mb-4">
+        <HomeLink />
+      </div>
       <QuestionCard
         key={current.id}
         question={current}

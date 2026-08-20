@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { DomainPicker } from '../components/DomainPicker'
 import { Button } from '../components/Button'
+import { HomeLink } from '../components/HomeLink'
 import { localDataClient } from '../lib/localDataClient'
 import type { Certification, Domain } from '../lib/types'
 
@@ -61,7 +62,8 @@ export function SetupPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
-      <h1 className="font-display text-[2.34375rem] italic">
+      <HomeLink />
+      <h1 className="mt-4 font-display text-[2.34375rem] italic">
         <CertName name={certification.name} />
       </h1>
       <p className="mt-2 text-[1.09375rem] text-ink/70">Choose which domains to practice.</p>

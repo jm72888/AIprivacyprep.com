@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation, useParams } from 'react-router-dom'
 import { DomainBreakdown } from '../components/DomainBreakdown'
 import { Button } from '../components/Button'
+import { HomeLink } from '../components/HomeLink'
 import { localDataClient } from '../lib/localDataClient'
 import type { Attempt, Domain, DomainScore } from '../lib/types'
 
@@ -26,7 +27,10 @@ export function ResultsPage() {
   if (!attempt) {
     return (
       <div className="mx-auto max-w-2xl px-6 py-12 text-center">
-        <p className="text-ink/70">No results to show.</p>
+        <div className="text-left">
+          <HomeLink />
+        </div>
+        <p className="mt-6 text-ink/70">No results to show.</p>
         <Link to="/" className="mt-4 inline-block text-accent hover:underline">
           Back to home
         </Link>
@@ -40,7 +44,8 @@ export function ResultsPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
-      <div className="border border-rule/50 p-8 text-center">
+      <HomeLink />
+      <div className="mt-6 border border-rule/50 p-8 text-center">
         <p className="font-mono text-xs uppercase tracking-widest text-accent">Determination</p>
         <p className="mt-3 font-display text-6xl italic">{pct}%</p>
         <p className="mt-2 font-mono text-sm text-ink/70">
