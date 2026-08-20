@@ -19,7 +19,7 @@ export function QuestionCard({
   const answered = selectedIndex !== null
 
   return (
-    <div className="rounded-lg border-l-4 border-accent bg-white p-6 shadow-sm sm:p-8">
+    <div className="animate-[fade-slide-up_250ms_ease-out] rounded-lg border-l-4 border-accent bg-white p-6 shadow-sm sm:p-8">
       <p className="text-xs font-medium uppercase tracking-wide text-ink/50">
         Question {index + 1} of {total}
       </p>
@@ -30,7 +30,8 @@ export function QuestionCard({
           const isCorrect = choiceIndex === question.correctIndex
           const isSelected = choiceIndex === selectedIndex
 
-          let stateClasses = 'border-ink/15 bg-white hover:border-ink/30'
+          let stateClasses =
+            'border-ink/15 bg-white hover:-translate-y-0.5 hover:border-accent/60 hover:bg-accent-soft/40 hover:shadow-md active:translate-y-0 active:duration-75'
           if (answered && isCorrect) {
             stateClasses = 'border-good bg-good-soft'
           } else if (answered && isSelected && !isCorrect) {
@@ -42,7 +43,7 @@ export function QuestionCard({
               key={choiceIndex}
               disabled={answered}
               onClick={() => onSelect(choiceIndex)}
-              className={`rounded-lg border p-4 text-left text-sm transition disabled:cursor-default ${stateClasses}`}
+              className={`rounded-lg border p-4 text-left text-sm transition-all duration-150 ease-out disabled:cursor-default ${stateClasses}`}
             >
               {choice}
             </button>
@@ -51,7 +52,7 @@ export function QuestionCard({
       </div>
 
       {answered && (
-        <div className="mt-6 rounded-lg bg-paper p-4 text-sm text-ink/80">
+        <div className="mt-6 animate-[fade-slide-up_200ms_ease-out] rounded-lg bg-paper p-4 text-sm text-ink/80">
           <p className="font-medium text-ink">
             {selectedIndex === question.correctIndex ? 'Correct.' : 'Not quite.'}
           </p>

@@ -68,6 +68,7 @@ export function QuizPage() {
   return (
     <div className="mx-auto max-w-2xl px-6 py-12">
       <QuestionCard
+        key={current.id}
         question={current}
         index={currentIndex}
         total={questions.length}

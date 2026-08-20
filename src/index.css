@@ -12,10 +12,24 @@
   --color-good-soft: #e2ede4;
   --color-bad: #a33d3d;
   --color-bad-soft: #f5e2e0;
+
+  --color-hero: #1e4a3a;
+  --color-hero-line: #d8e9a3;
 }
 
 body {
   background-color: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+}
+
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

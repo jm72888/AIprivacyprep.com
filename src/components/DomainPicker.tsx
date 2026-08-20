@@ -16,8 +16,8 @@ export function DomainPicker({
         return (
           <label
             key={domain.id}
-            className={`flex cursor-pointer items-center gap-3 rounded-lg border-l-4 bg-white p-4 shadow-sm transition ${
-              checked ? 'border-accent' : 'border-ink/10'
+            className={`flex cursor-pointer items-center gap-3 rounded-lg border-l-4 bg-white p-4 shadow-sm transition-all duration-150 ease-out hover:-translate-y-0.5 hover:shadow-md active:translate-y-0 active:duration-75 ${
+              checked ? 'border-accent' : 'border-ink/10 hover:border-accent/50'
             }`}
           >
             <input
