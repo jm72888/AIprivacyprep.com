@@ -24,3 +24,6 @@ Phase 1 (current): fully working app against local data
 Phase 2 (not yet started): swap `src/lib/localDataClient.ts` for a
 Supabase-backed implementation of `src/lib/dataClient.ts`, add owner auth.
 `supabase/schema.sql` already has the planned schema.
+
+See `ROADMAP.md` for the detailed done/in-progress/not-started breakdown,
+known gaps, and open product decisions.
