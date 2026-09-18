@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom'
 import { DomainPicker } from '../components/DomainPicker'
 import { Button, buttonClasses } from '../components/Button'
 import { CertBadge } from '../components/CertBadge'
@@ -12,6 +12,7 @@ import type { Certification, Domain } from '../lib/types'
 export function SetupPage() {
   const { certId = '' } = useParams()
   const navigate = useNavigate()
+  const requestedDomainIds = (useLocation().state as { domainIds?: string[] } | null)?.domainIds
   const [certification, setCertification] = useState<Certification | null>(null)
   const [domains, setDomains] = useState<Domain[]>([])
   const [selected, setSelected] = useState<Set<string>>(new Set())
@@ -23,12 +24,15 @@ export function SetupPage() {
         if (cancelled) return
         setCertification(certs.find((c) => c.id === certId) ?? null)
         setDomains(domainList)
-        setSelected(new Set(domainList.map((d) => d.id)))
+        const requested = domainList.filter((d) => requestedDomainIds?.includes(d.id))
+        setSelected(new Set((requested.length > 0 ? requested : domainList).map((d) => d.id)))
       },
     )
     return () => {
       cancelled = true
     }
+    // Only apply the preselection on first load, not when navigating back from a quiz.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [certId])
 
   const allSelected = useMemo(() => selected.size === domains.length && domains.length > 0, [selected, domains])
@@ -56,11 +60,11 @@ export function SetupPage() {
     <PageShell>
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
         <Link
-          to="/#certifications"
+          to="/"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:text-ink"
         >
           <ArrowLeft className="h-4 w-4" />
-          All certifications
+          Back to home
         </Link>
 
         <div className="mt-6 animate-[fade-slide-up_300ms_ease-out]">
@@ -87,7 +91,7 @@ export function SetupPage() {
           </div>
 
           <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-5">
-            <Link to="/#certifications" className={buttonClasses('ghost')}>
+            <Link to="/" className={buttonClasses('ghost')}>
               Cancel
             </Link>
             <Button disabled={selected.size === 0} onClick={startQuiz}>

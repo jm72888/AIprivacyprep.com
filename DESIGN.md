@@ -1,6 +1,6 @@
 ---
-name: CIPP/AIGP Practice Quiz
-description: A bright, modern practice tool for the IAPP CIPP/US, CIPP/E, and AIGP certifications
+name: AIGP Practice Quiz
+description: A bright, modern practice tool for the IAPP AIGP (AI governance) exam
 colors:
   canvas: "#f5f7fb"
   surface: "#ffffff"
@@ -24,14 +24,14 @@ radius:
   container: "16px (rounded-2xl)"
 ---
 
-# Design System: CIPP/AIGP Practice Quiz
+# Design System: AIGP Practice Quiz
 
 ## Overview
 
 **North star: "Clear, bright, confident."** A modern study tool, not a legal
 document. Light cool-white canvas, white cards with soft tinted shadows, one
-confident cobalt brand color, and a color per certification so the three
-exams are recognizable at a glance.
+confident cobalt brand color, and amber as the AIGP accent. The site is
+focused on the AIGP exam only; CIPP content was removed from the UI.
 
 This replaced the earlier "Regulatory Gazette" direction (paper background,
 Newsreader serif italics, mono uppercase labels, § markers, stamp red, sharp
@@ -46,9 +46,9 @@ corners). None of those elements should come back.
   dividers.
 - **Semantic**: `good` / `good-soft` for correct answers and scores >= 70%;
   `bad` / `bad-soft` for wrong answers and scores < 70%.
-- **Certification colors** (`src/lib/certTheme.ts`): CIPP/US = blue,
-  CIPP/E = teal, AIGP = amber. Used for the code badge (`CertBadge`) and the
-  solid tile on certification cards. Add new certs to that map.
+- **AIGP amber**: the AIGP code badge (`CertBadge`) and the numbered tiles on
+  domain cards. `src/lib/certTheme.ts` still holds CIPP colors so older
+  history entries render correctly.
 - The hero uses soft blurred brand/teal/amber glows for depth; everywhere
   else stays flat and bright.
 
@@ -61,8 +61,11 @@ compared (scores, counts, prices) use `tabular-nums`. Headings get
 
 ## Layout
 
-- Home: `max-w-6xl` sections. Hero is two columns on large screens (copy +
-  a sample question card), stacking on mobile.
+- Home: `max-w-6xl` sections. Hero is two columns on large screens (copy,
+  stats, and a sample AIGP question card), stacking on mobile. Then a domain
+  grid (one card per AIGP domain, linking to setup with that domain
+  preselected, plus a cobalt "Practice all domains" card), then the cost
+  comparison.
 - Inner pages (setup, quiz, results, history): `max-w-3xl`, content in white
   cards (`rounded-2xl bg-surface shadow-card ring-1 ring-line`).
 - Every page is wrapped in `PageShell` (sticky blurred top nav + footer with
@@ -95,5 +98,5 @@ disabled under `prefers-reduced-motion`.
 - No serif or monospace display type, no § glyphs, no "docket" /
   "determination" style wording.
 - No purple/blue gradients on text or buttons.
-- Don't add new accent hues outside brand, semantic, and the three cert colors.
+- Don't add new accent hues outside brand, semantic, and AIGP amber.
 - Don't drop `muted` text below its current darkness; lighter grays fail AA.

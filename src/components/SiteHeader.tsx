@@ -14,12 +14,12 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center gap-2.5 font-bold tracking-tight">
           <LogoMark className="h-8 w-8" />
           <span>
-            Privacy<span className="text-brand">&nbsp;&amp;&nbsp;AI</span> Practice
+            AIGP<span className="text-brand"> Prep</span>
           </span>
         </Link>
         <nav className="flex items-center gap-1">
-          <Link to="/#certifications" className={navClass({ isActive: false }) + ' hidden sm:inline-flex'}>
-            Certifications
+          <Link to="/#domains" className={navClass({ isActive: false }) + ' hidden sm:inline-flex'}>
+            Domains
           </Link>
           <NavLink to="/history" className={navClass}>
             History
@@ -34,7 +34,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-line">
       <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-6">
-        <p>Practice questions are unofficial and not affiliated with or endorsed by the IAPP.</p>
+        <p>Unofficial practice questions. Not affiliated with or endorsed by the IAPP.</p>
         <Link to="/history" className="font-medium hover:text-ink">
           Your practice history
         </Link>

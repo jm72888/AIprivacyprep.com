@@ -4,7 +4,7 @@ import { DomainBreakdown } from '../components/DomainBreakdown'
 import { buttonClasses } from '../components/Button'
 import { CertBadge } from '../components/CertBadge'
 import { PageShell } from '../components/SiteHeader'
-import { certifications } from '../data/certifications'
+import { AIGP_SETUP_PATH, certifications } from '../data/certifications'
 import { localDataClient } from '../lib/localDataClient'
 import type { Attempt, Domain, DomainScore } from '../lib/types'
 
@@ -60,8 +60,8 @@ export function ResultsPage() {
         <div className="mx-auto max-w-md px-4 py-20 text-center sm:px-6">
           <h1 className="text-2xl font-bold">No results to show</h1>
           <p className="mt-2 text-muted">Finish a quiz to see your score and domain breakdown here.</p>
-          <Link to="/#certifications" className={buttonClasses('primary', 'mt-6')}>
-            Choose a certification
+          <Link to={AIGP_SETUP_PATH} className={buttonClasses('primary', 'mt-6')}>
+            Start a quiz
           </Link>
         </div>
       </PageShell>

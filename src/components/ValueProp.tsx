@@ -1,8 +1,7 @@
 const COSTS = [
-  { label: 'CIPP exam fee', value: '$550' },
   { label: 'AIGP exam fee', value: '$649–$799' },
   { label: 'Annual IAPP membership', value: '$275–$295' },
-  { label: 'Formal training course', value: '$995–$1,195' },
+  { label: 'Formal AIGP training course', value: '$995–$1,195' },
 ]
 
 export function ValueProp() {
@@ -12,11 +11,12 @@ export function ValueProp() {
         <div>
           <p className="text-sm font-semibold text-brand">Why it&apos;s free</p>
           <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
-            Certification isn&apos;t cheap. Practice here for free.
+            The AIGP isn&apos;t cheap. Practicing for it can be.
           </h2>
           <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">
-            Exam fees are just the start. Add annual IAPP membership, textbooks, or paid practice exams,
-            and prep can easily top $1,000 before exam day. Get comfortable with the material here first.
+            Between the exam fee, membership, and an official training course, AIGP prep can pass $2,000
+            before you sit the exam. Test yourself here first and spend your study budget where you
+            actually need it.
           </p>
         </div>
 

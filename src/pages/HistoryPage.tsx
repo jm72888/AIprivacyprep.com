@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { buttonClasses } from '../components/Button'
 import { CertBadge } from '../components/CertBadge'
 import { PageShell } from '../components/SiteHeader'
-import { certifications } from '../data/certifications'
+import { AIGP_SETUP_PATH, certifications } from '../data/certifications'
 import { localDataClient } from '../lib/localDataClient'
 import type { Attempt } from '../lib/types'
 
@@ -26,7 +26,7 @@ export function HistoryPage() {
           <div className="mt-8 rounded-2xl border-2 border-dashed border-line px-6 py-14 text-center">
             <h2 className="text-lg font-semibold">No quizzes yet</h2>
             <p className="mt-1 text-muted">Your scores will show up here after you finish your first quiz.</p>
-            <Link to="/#certifications" className={buttonClasses('primary', 'mt-6')}>
+            <Link to={AIGP_SETUP_PATH} className={buttonClasses('primary', 'mt-6')}>
               Start practicing
             </Link>
           </div>
