@@ -14,7 +14,7 @@ function DevelopmentCard({ item }: { item: Development }) {
   return (
     <article className="border-t border-line py-8">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
-        <span className="font-semibold text-brand">{item.category}</span>
+        <span className="font-semibold text-info">{item.category}</span>
         <span className="font-medium text-muted">{item.region}</span>
         <span className="text-muted" aria-hidden="true">
           &middot;

@@ -30,7 +30,7 @@ function LatestDevelopments() {
           {items.map((item) => (
             <li key={item.url} className="border-t border-line py-5">
               <p className="text-sm text-muted">
-                <span className="font-semibold text-ink">{item.category}</span>
+                <span className="font-semibold text-info">{item.category}</span>
                 <span className="mx-2 text-line" aria-hidden="true">|</span>
                 {item.region}, {shortDate.format(new Date(`${item.publishedDate}T00:00:00Z`))}
               </p>
@@ -38,7 +38,7 @@ function LatestDevelopments() {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 block text-lg font-semibold leading-snug tracking-tight transition-colors hover:text-brand"
+                className="mt-2 block text-lg font-semibold leading-snug tracking-tight transition-colors hover:text-info"
               >
                 {item.title}
                 <span className="sr-only"> (opens in a new tab)</span>

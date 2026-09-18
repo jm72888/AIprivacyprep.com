@@ -42,7 +42,7 @@ export function Hero({ domains, questionCounts }: { domains: Domain[]; questionC
                     state={{ domainIds: [domain.id] }}
                     className="group grid grid-cols-[1.75rem_1fr_auto] items-center gap-3 py-3.5"
                   >
-                    <DomainIcon domainId={domain.id} className="text-brand" />
+                    <DomainIcon domainId={domain.id} className="text-info" />
                     <span className="font-medium transition-colors group-hover:text-brand">{domain.name}</span>
                     <span className="text-sm text-muted tabular-nums">
                       {questionCounts[domain.id] ?? ''} questions

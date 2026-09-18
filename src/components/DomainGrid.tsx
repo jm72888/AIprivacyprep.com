@@ -22,7 +22,7 @@ export function DomainGrid({ domains, questionCounts }: { domains: Domain[]; que
             state={{ domainIds: [domain.id] }}
             className="group grid gap-x-8 gap-y-2 py-7 transition-colors hover:bg-surface sm:grid-cols-[3.5rem_1fr_auto] sm:items-center sm:px-3"
           >
-            <span className="flex h-12 w-12 items-center justify-center rounded-md bg-surface text-brand ring-1 ring-inset ring-line transition-colors group-hover:ring-brand/40">
+            <span className="flex h-12 w-12 items-center justify-center rounded-md bg-info-soft text-info ring-1 ring-inset ring-info/15 transition-colors group-hover:ring-info/40">
               <DomainIcon domainId={domain.id} size={26} />
             </span>
             <span>
