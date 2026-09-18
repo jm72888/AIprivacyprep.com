@@ -4,6 +4,7 @@ import { SetupPage } from './pages/SetupPage'
 import { QuizPage } from './pages/QuizPage'
 import { ResultsPage } from './pages/ResultsPage'
 import { HistoryPage } from './pages/HistoryPage'
+import { DevelopmentsPage } from './pages/DevelopmentsPage'
 
 export function App() {
   return (
@@ -13,6 +14,7 @@ export function App() {
       <Route path="/quiz/:certId/run" element={<QuizPage />} />
       <Route path="/quiz/:certId/results" element={<ResultsPage />} />
       <Route path="/history" element={<HistoryPage />} />
+      <Route path="/developments" element={<DevelopmentsPage />} />
     </Routes>
   )
 }

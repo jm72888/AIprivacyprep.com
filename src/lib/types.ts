@@ -43,3 +43,25 @@ export interface DomainScore {
   correct: number
   total: number
 }
+
+export const DEVELOPMENT_CATEGORIES = ['Law & regulation', 'Enforcement', 'Government', 'Industry'] as const
+
+export type DevelopmentCategory = (typeof DEVELOPMENT_CATEGORIES)[number]
+
+export interface Development {
+  title: string
+  summary: string
+  category: DevelopmentCategory
+  region: string
+  source: string
+  url: string
+  publishedDate: string
+}
+
+export interface WeeklyDevelopments {
+  weekOf: string
+  periodStart: string
+  periodEnd: string
+  generatedAt: string
+  items: Development[]
+}

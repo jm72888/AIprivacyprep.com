@@ -21,6 +21,10 @@ export function SiteHeader() {
           <Link to="/#domains" className={navClass({ isActive: false }) + ' hidden sm:inline-flex'}>
             Domains
           </Link>
+          <NavLink to="/developments" className={navClass}>
+            <span className="sm:hidden">This week</span>
+            <span className="hidden sm:inline">This week&apos;s developments</span>
+          </NavLink>
           <NavLink to="/history" className={navClass}>
             History
           </NavLink>
