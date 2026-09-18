@@ -4,6 +4,9 @@ export interface DataClient {
   listCertifications(): Promise<Certification[]>
   listDomains(certificationId: string): Promise<Domain[]>
   getQuestions(certificationId: string, domainIds: string[]): Promise<Question[]>
+  drawQuestions(certificationId: string, domainIds: string[]): Promise<Question[]>
+  markSeen(question: Question): void
+  getRoundProgress(certificationId: string): Record<string, { answered: number; total: number }>
   saveAttempt(attempt: Attempt): Promise<void>
   listAttempts(): Promise<Attempt[]>
   scoreByDomain(attempt: Attempt, domains: Domain[]): DomainScore[]

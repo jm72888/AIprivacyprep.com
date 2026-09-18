@@ -6,7 +6,7 @@ import { CertBadge } from '../components/CertBadge'
 import { PageShell } from '../components/SiteHeader'
 import { ArrowLeft, ArrowRight } from '../components/icons'
 import { certTheme } from '../lib/certTheme'
-import { localDataClient } from '../lib/localDataClient'
+import { localDataClient, QUESTIONS_PER_DOMAIN } from '../lib/localDataClient'
 import type { Certification, Domain } from '../lib/types'
 
 export function SetupPage() {
@@ -78,7 +78,10 @@ export function SetupPage() {
             <div>
               <h2 className="font-semibold">Choose your domains</h2>
               <p className="mt-0.5 text-sm text-muted tabular-nums">
-                {selected.size} of {domains.length} selected
+                {selected.size} of {domains.length} selected &middot; {selected.size * QUESTIONS_PER_DOMAIN} questions
+              </p>
+              <p className="mt-1 text-sm text-muted">
+                Each run gives you {QUESTIONS_PER_DOMAIN} questions per domain that you haven&apos;t answered yet.
               </p>
             </div>
             <Button variant="ghost" onClick={toggleAll} className="px-3 py-2 text-brand hover:text-brand-strong">
@@ -87,7 +90,12 @@ export function SetupPage() {
           </div>
 
           <div className="mt-5">
-            <DomainPicker domains={domains} selected={selected} onToggle={toggleDomain} />
+            <DomainPicker
+              domains={domains}
+              selected={selected}
+              onToggle={toggleDomain}
+              progress={localDataClient.getRoundProgress(certId)}
+            />
           </div>
 
           <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-5">

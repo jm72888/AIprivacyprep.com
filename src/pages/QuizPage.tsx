@@ -29,7 +29,7 @@ export function QuizPage() {
       navigate(`/quiz/${certId}/setup`, { replace: true })
       return
     }
-    Promise.all([localDataClient.getQuestions(certId, domainIds), localDataClient.listDomains(certId)]).then(
+    Promise.all([localDataClient.drawQuestions(certId, domainIds), localDataClient.listDomains(certId)]).then(
       ([questionList, domainList]) => {
         setQuestions(questionList)
         setDomains(domainList)
@@ -46,6 +46,7 @@ export function QuizPage() {
   function handleSubmit(choiceIndex: number) {
     if (submittedIndex !== null) return
     setSubmittedIndex(choiceIndex)
+    localDataClient.markSeen(current)
     setAnswers((prev) => [
       ...prev,
       {

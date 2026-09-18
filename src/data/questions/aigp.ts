@@ -1,6 +1,11 @@
 import type { Question } from '../../lib/types'
+import { foundationsQuestions } from './aigp/foundations'
+import { risksQuestions } from './aigp/risks'
+import { lifecycleQuestions } from './aigp/lifecycle'
+import { lawQuestions } from './aigp/law'
+import { governanceQuestions } from './aigp/governance'
 
-export const aigpQuestions: Question[] = [
+const originalQuestions: Question[] = [
   // ---------------------------------------------------------------------
   // Domain 1: AI Foundations & Concepts
   // ---------------------------------------------------------------------
@@ -620,4 +625,13 @@ export const aigpQuestions: Question[] = [
     explanation:
       'Risk profile depends on context and affected population, not just code — extending use to a new, more vulnerable population like minors is a material change that warrants an earlier reassessment even with zero code changes. Treating it as code-change-only, deferring to the next scheduled cycle, or waving it off as "merely documentation" all understate the substantive risk shift.',
   },
+]
+
+export const aigpQuestions: Question[] = [
+  ...originalQuestions,
+  ...foundationsQuestions,
+  ...risksQuestions,
+  ...lifecycleQuestions,
+  ...lawQuestions,
+  ...governanceQuestions,
 ]

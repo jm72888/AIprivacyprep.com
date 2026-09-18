@@ -5,10 +5,12 @@ export function DomainPicker({
   domains,
   selected,
   onToggle,
+  progress = {},
 }: {
   domains: Domain[]
   selected: Set<string>
   onToggle: (domainId: string) => void
+  progress?: Record<string, { answered: number; total: number }>
 }) {
   return (
     <div className="grid gap-3 sm:grid-cols-2">
@@ -34,7 +36,14 @@ export function DomainPicker({
             >
               {checked && <Check className="h-3.5 w-3.5" strokeWidth={3} />}
             </span>
-            <span className={`font-medium ${checked ? 'text-ink' : 'text-muted'}`}>{domain.name}</span>
+            <span className="min-w-0">
+              <span className={`block font-medium ${checked ? 'text-ink' : 'text-muted'}`}>{domain.name}</span>
+              {progress[domain.id] && (
+                <span className="mt-0.5 block text-xs text-muted tabular-nums">
+                  {progress[domain.id].answered} of {progress[domain.id].total} answered this round
+                </span>
+              )}
+            </span>
           </label>
         )
       })}

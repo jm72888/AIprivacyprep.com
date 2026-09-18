@@ -21,6 +21,10 @@ const questionsByCert: Record<string, Question[]> = {
 }
 
 const ATTEMPTS_KEY = 'privacy-quiz-attempts'
+const SEEN_KEY = 'privacy-quiz-seen'
+
+// Each quiz run shows this many questions per selected domain.
+export const QUESTIONS_PER_DOMAIN = 8
 
 function shuffle<T>(items: T[]): T[] {
   const copy = [...items]
@@ -46,6 +50,51 @@ export const localDataClient: DataClient = {
     return shuffle(filtered)
   },
 
+  // Picks the next QUESTIONS_PER_DOMAIN questions this browser hasn't answered in
+  // each domain's current round. When a domain runs out, its round starts over.
+  async drawQuestions(certificationId, domainIds) {
+    const all = questionsByCert[certificationId] ?? []
+    const seen = readSeen()
+    const drawn: Question[] = []
+
+    for (const domainId of domainIds) {
+      const pool = all.filter((q) => q.domainId === domainId)
+      const seenIds = new Set(seen[domainId] ?? [])
+      const picked = shuffle(pool.filter((q) => !seenIds.has(q.id))).slice(0, QUESTIONS_PER_DOMAIN)
+
+      if (picked.length < QUESTIONS_PER_DOMAIN) {
+        seen[domainId] = []
+        const pickedIds = new Set(picked.map((q) => q.id))
+        const refill = shuffle(pool.filter((q) => !pickedIds.has(q.id)))
+        picked.push(...refill.slice(0, QUESTIONS_PER_DOMAIN - picked.length))
+      }
+      drawn.push(...picked)
+    }
+
+    writeSeen(seen)
+    return shuffle(drawn).map(shuffleChoices)
+  },
+
+  markSeen(question) {
+    const seen = readSeen()
+    const ids = seen[question.domainId] ?? []
+    if (!ids.includes(question.id)) seen[question.domainId] = [...ids, question.id]
+    writeSeen(seen)
+  },
+
+  getRoundProgress(certificationId) {
+    const seen = readSeen()
+    const progress: Record<string, { answered: number; total: number }> = {}
+    for (const question of questionsByCert[certificationId] ?? []) {
+      progress[question.domainId] ??= { answered: 0, total: 0 }
+      progress[question.domainId].total += 1
+    }
+    for (const [domainId, entry] of Object.entries(progress)) {
+      entry.answered = Math.min(seen[domainId]?.length ?? 0, entry.total)
+    }
+    return progress
+  },
+
   async saveAttempt(attempt) {
     const existing = readAttempts()
     existing.push(attempt)
@@ -69,6 +118,33 @@ export const localDataClient: DataClient = {
     }
     return [...scores.values()].filter((s) => s.total > 0)
   },
+}
+
+// Answer order is shuffled on every draw so the correct answer's position isn't a tell.
+function shuffleChoices(question: Question): Question {
+  const order = shuffle(question.choices.map((_, i) => i))
+  return {
+    ...question,
+    choices: order.map((i) => question.choices[i]),
+    correctIndex: order.indexOf(question.correctIndex),
+  }
+}
+
+function readSeen(): Record<string, string[]> {
+  try {
+    const raw = localStorage.getItem(SEEN_KEY)
+    return raw ? (JSON.parse(raw) as Record<string, string[]>) : {}
+  } catch {
+    return {}
+  }
+}
+
+function writeSeen(seen: Record<string, string[]>) {
+  try {
+    localStorage.setItem(SEEN_KEY, JSON.stringify(seen))
+  } catch {
+    // Storage unavailable (private mode, quota): rotation just won't persist.
+  }
 }
 
 function readAttempts(): Attempt[] {
