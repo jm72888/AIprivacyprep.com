@@ -19,7 +19,7 @@ function formatDate(iso: string, format: Intl.DateTimeFormat) {
 
 function DevelopmentCard({ item }: { item: Development }) {
   return (
-    <article className="rounded-2xl bg-surface p-5 shadow-card ring-1 ring-line sm:p-6">
+    <article className="rounded-2xl bg-surface p-5 shadow-card ring-1 ring-line sm:p-8">
       <div className="flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
         <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${CATEGORY_STYLES[item.category]}`}>
           {item.category}
@@ -32,7 +32,7 @@ function DevelopmentCard({ item }: { item: Development }) {
           {formatDate(item.publishedDate, shortDate)}
         </time>
       </div>
-      <h3 className="mt-3 text-lg font-bold leading-snug">{item.title}</h3>
+      <h3 className="mt-3 text-xl font-bold leading-snug">{item.title}</h3>
       <div className="mt-2 space-y-3 leading-relaxed text-muted">
         {item.summary.split(/\n\s*\n/).map((paragraph, i) => (
           <p key={i}>{paragraph}</p>
@@ -64,10 +64,10 @@ export function DevelopmentsPage() {
 
   return (
     <PageShell>
-      <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+      <div className="mx-auto max-w-5xl px-4 py-10 sm:px-6 sm:py-14">
         <p className="text-sm font-semibold text-brand">Updated every Monday</p>
         <h1 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">This week&apos;s developments</h1>
-        <p className="mt-3 text-lg leading-relaxed text-muted">
+        <p className="mt-3 max-w-3xl text-lg leading-relaxed text-muted">
           The week&apos;s most important news in AI data governance and privacy law, from regulators,
           legislatures, courts, and industry.
         </p>

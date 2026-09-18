@@ -60,11 +60,11 @@ export function SetupPage() {
     <PageShell>
       <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
         <Link
-          to="/"
+          to="/practice"
           className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:text-ink"
         >
           <ArrowLeft className="h-4 w-4" />
-          Back to home
+          Back to practice
         </Link>
 
         <div className="mt-6 animate-[fade-slide-up_300ms_ease-out]">
@@ -91,7 +91,7 @@ export function SetupPage() {
           </div>
 
           <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-5">
-            <Link to="/" className={buttonClasses('ghost')}>
+            <Link to="/practice" className={buttonClasses('ghost')}>
               Cancel
             </Link>
             <Button disabled={selected.size === 0} onClick={startQuiz}>

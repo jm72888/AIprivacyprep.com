@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import { AIGP_SETUP_PATH } from '../data/certifications'
 import { buttonClasses } from './Button'
 import { CertBadge } from './CertBadge'
 import { ArrowRight, Check } from './icons'
@@ -86,13 +85,13 @@ export function Hero({ questionCount, domainCount }: { questionCount?: number; d
             need more study.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <Link to={AIGP_SETUP_PATH} className={buttonClasses('primary', 'px-6 py-3 text-base')}>
+            <Link to="/practice" className={buttonClasses('primary', 'px-6 py-3 text-base')}>
               Start practicing
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <a href="#domains" className={buttonClasses('secondary', 'px-6 py-3 text-base')}>
-              See what&apos;s covered
-            </a>
+            <Link to="/developments" className={buttonClasses('secondary', 'px-6 py-3 text-base')}>
+              This week&apos;s developments
+            </Link>
           </div>
           <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-4">
             {stats.map((stat) => (
