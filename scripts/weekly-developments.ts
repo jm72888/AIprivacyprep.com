@@ -86,7 +86,8 @@ Standards:
 - Newsletters, daily digests, and roundup pages (for example The Neuron or other "everything that happened in AI" posts) can help you find stories, but never cite them. Cite the original announcement or an established outlet's article about that specific story. If you cannot open any such source, leave the story out.
 - Each development needs its own source URL. Never use the same URL for two developments.
 - Leave out opinion pieces, vendor marketing, and minor updates. Pick the developments a governance professional would most need to know about.
-- Report facts neutrally. Do not speculate about outcomes.`
+- Report facts neutrally. Do not speculate about outcomes.
+- Each summary is shown on its own card, so it must stand alone. Never refer to other items (for example "see item 8" or "as noted above").`
 
 async function research(previousUrls: Set<string>): Promise<string> {
   const skipList = previousUrls.size > 0 ? `\n\nThese sources were already covered in earlier weeks. Do not include them again:\n${[...previousUrls].join('\n')}` : ''
