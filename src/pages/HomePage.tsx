@@ -35,6 +35,7 @@ export function HomePage() {
         questionCount={totalQuestions || undefined}
         domainCount={domains.length || undefined}
       />
+      <ValueProp />
       <section id="domains" className="mx-auto max-w-6xl scroll-mt-20 px-4 py-16 sm:px-6 sm:py-20">
         <div className="max-w-2xl">
           <p className="text-sm font-semibold text-brand">What the exam covers</p>
@@ -50,7 +51,6 @@ export function HomePage() {
           <DomainGrid domains={domains} questionCounts={questionCounts} />
         </div>
       </section>
-      <ValueProp />
     </PageShell>
   )
 }
