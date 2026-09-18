@@ -17,7 +17,10 @@ import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { DEVELOPMENT_CATEGORIES, type Development, type WeeklyDevelopments } from '../src/lib/types.ts'
 
-const MODEL = 'claude-opus-5'
+// Research reads many web pages, so it runs on the cheaper Sonnet 5. The short
+// formatting step stays on Opus 5.
+const RESEARCH_MODEL = 'claude-sonnet-5'
+const FORMAT_MODEL = 'claude-opus-5'
 const DATA_DIR = 'src/data/developments'
 const MAX_CONTINUATIONS = 8
 const URL_CHECK_TIMEOUT_MS = 15_000
@@ -109,16 +112,17 @@ For each development, write:
   for (let attempt = 0; attempt <= MAX_CONTINUATIONS; attempt++) {
     const response = await client.beta.messages
       .stream({
-        model: MODEL,
+        model: RESEARCH_MODEL,
         max_tokens: 64000,
-        betas: ['server-side-fallback-2026-07-01'],
-        fallbacks: 'default',
+        // Every search and fetched page is re-read on each step of the research loop.
+        // Caching makes those re-reads cost about a tenth of the normal input price.
+        cache_control: { type: 'ephemeral' },
         thinking: { type: 'adaptive' },
-        output_config: { effort: 'high' },
+        output_config: { effort: 'medium' },
         system: RESEARCH_SYSTEM,
         tools: [
-          { type: 'web_search_20260209', name: 'web_search', max_uses: 25 },
-          { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 30 },
+          { type: 'web_search_20260209', name: 'web_search', max_uses: 15 },
+          { type: 'web_fetch_20260209', name: 'web_fetch', max_uses: 15, max_content_tokens: 8000 },
         ],
         messages,
       })
@@ -163,7 +167,7 @@ const DigestSchema = z.object({
 
 async function format(notes: string): Promise<Development[]> {
   const response = await client.messages.parse({
-    model: MODEL,
+    model: FORMAT_MODEL,
     max_tokens: 16000,
     system:
       'Convert research notes into structured data. Copy facts, URLs, and dates exactly as they appear in the notes. Do not add developments, details, or links that are not in the notes. Write publishedDate as YYYY-MM-DD. The source field must be only the publication or organization name, with no description or commentary. Keep each summary as the 2 or 3 paragraphs from the notes, in plain, neutral language, with paragraphs separated by a blank line.',
