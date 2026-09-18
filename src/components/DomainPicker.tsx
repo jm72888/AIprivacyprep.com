@@ -20,7 +20,7 @@ export function DomainPicker({
           <label
             key={domain.id}
             className={`flex cursor-pointer items-center gap-3 rounded-xl p-4 ring-1 ring-inset transition-all duration-200 ease-out has-[:focus-visible]:outline-2 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-brand ${
-              checked ? 'bg-brand-soft ring-brand/50' : 'bg-surface ring-line hover:ring-ink/20'
+              checked ? 'bg-surface ring-ink/70' : 'bg-transparent ring-line hover:ring-ink/30'
             }`}
           >
             <input

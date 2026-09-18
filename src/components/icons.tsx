@@ -46,11 +46,3 @@ export function Cross(props: SVGProps<SVGSVGElement>) {
     </Svg>
   )
 }
-
-export function LogoMark({ className = '' }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center justify-center rounded-lg bg-brand text-white ${className}`}>
-      <Check className="h-[60%] w-[60%]" strokeWidth={3} />
-    </span>
-  )
-}
