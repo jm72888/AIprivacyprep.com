@@ -77,12 +77,11 @@ export function Hero({ questionCount, domainCount }: { questionCount?: number; d
             Free &middot; No sign-up
           </span>
           <h1 className="mt-5 text-4xl font-extrabold leading-[1.05] tracking-tight sm:text-5xl lg:text-6xl">
-            Get ready for the <span className="text-brand">AIGP exam</span>
+            Get ready for the <span className="text-brand">AI Governance Professional</span> exam
           </h1>
           <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted">
-            Scenario-based questions on AI governance for the IAPP&rsquo;s Artificial Intelligence Governance
-            Professional certification. Get an explanation after every answer and see which domains
-            need more study.
+            Scenario-based questions for the IAPP&rsquo;s AIGP certification. Get an explanation after
+            every answer and see which domains need more study.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link to="/practice" className={buttonClasses('primary', 'px-6 py-3 text-base')}>
