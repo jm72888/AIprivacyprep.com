@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { AIGP_SETUP_PATH } from '../data/certifications'
 import type { Domain } from '../lib/types'
+import { DomainIcon } from './DomainIcon'
 import { ArrowRight } from './icons'
 
 const DOMAIN_SUMMARIES: Record<string, string> = {
@@ -21,11 +22,12 @@ export function DomainGrid({ domains, questionCounts }: { domains: Domain[]; que
             state={{ domainIds: [domain.id] }}
             className="group grid gap-x-8 gap-y-2 py-7 transition-colors hover:bg-surface sm:grid-cols-[3.5rem_1fr_auto] sm:items-center sm:px-3"
           >
-            <span className="text-4xl font-bold leading-none tracking-tight text-brand tabular-nums">
-              {domain.order}
+            <span className="flex h-12 w-12 items-center justify-center rounded-md bg-surface text-brand ring-1 ring-inset ring-line transition-colors group-hover:ring-brand/40">
+              <DomainIcon domainId={domain.id} size={26} />
             </span>
             <span>
-              <span className="block text-xl font-semibold tracking-tight">{domain.name}</span>
+              <span className="block text-sm font-medium text-muted">Domain {domain.order}</span>
+              <span className="mt-0.5 block text-xl font-semibold tracking-tight">{domain.name}</span>
               <span className="mt-1.5 block max-w-2xl leading-relaxed text-muted">{DOMAIN_SUMMARIES[domain.id]}</span>
             </span>
             <span className="mt-2 inline-flex items-center gap-2 text-sm font-semibold sm:mt-0">

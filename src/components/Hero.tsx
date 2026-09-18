@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { AIGP_SETUP_PATH } from '../data/certifications'
 import type { Domain } from '../lib/types'
 import { buttonClasses } from './Button'
+import { DomainIcon } from './DomainIcon'
 import { ArrowRight } from './icons'
 
 export function Hero({ domains, questionCounts }: { domains: Domain[]; questionCounts: Record<string, number> }) {
@@ -39,9 +40,9 @@ export function Hero({ domains, questionCounts }: { domains: Domain[]; questionC
                   <Link
                     to={AIGP_SETUP_PATH}
                     state={{ domainIds: [domain.id] }}
-                    className="group grid grid-cols-[1.75rem_1fr_auto] items-baseline gap-3 py-3.5"
+                    className="group grid grid-cols-[1.75rem_1fr_auto] items-center gap-3 py-3.5"
                   >
-                    <span className="font-semibold text-brand tabular-nums">{domain.order}</span>
+                    <DomainIcon domainId={domain.id} className="text-brand" />
                     <span className="font-medium transition-colors group-hover:text-brand">{domain.name}</span>
                     <span className="text-sm text-muted tabular-nums">
                       {questionCounts[domain.id] ?? ''} questions
