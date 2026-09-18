@@ -83,6 +83,8 @@ In scope:
 Standards:
 - Only include developments that happened or were first reported within the requested date range.
 - Prefer primary sources (regulators, legislatures, courts, official company announcements) and established news outlets. Open each source with web fetch to confirm the details and the date before including it.
+- Newsletters, daily digests, and roundup pages (for example The Neuron or other "everything that happened in AI" posts) can help you find stories, but never cite them. Cite the original announcement or an established outlet's article about that specific story. If you cannot open any such source, leave the story out.
+- Each development needs its own source URL. Never use the same URL for two developments.
 - Leave out opinion pieces, vendor marketing, and minor updates. Pick the developments a governance professional would most need to know about.
 - Report facts neutrally. Do not speculate about outcomes.`
 
@@ -98,7 +100,7 @@ For each development, write:
 - A 2 to 3 paragraph factual summary of what happened and why it matters for AI governance
 - Category (one of: ${DEVELOPMENT_CATEGORIES.join(', ')})
 - Region or jurisdiction (for example "EU", "United States", "California", "United Kingdom", "Global")
-- Source name and the exact URL you opened
+- Source: just the publication or organization name (for example "Reuters", "European Commission", "Office of the Governor of California"), and the exact URL you opened
 - The date it happened or was published (YYYY-MM-DD)${skipList}`,
     },
   ]
@@ -137,6 +139,7 @@ For each development, write:
       .map((block) => block.text)
       .join('')
       .trim()
+    console.log(`Research usage: ${JSON.stringify(response.usage)}`)
     if (!notes) throw new Error('Research step returned no text')
     return notes
   }
@@ -162,10 +165,11 @@ async function format(notes: string): Promise<Development[]> {
     model: MODEL,
     max_tokens: 16000,
     system:
-      'Convert research notes into structured data. Copy facts, URLs, and dates exactly as they appear in the notes. Do not add developments, details, or links that are not in the notes. Write publishedDate as YYYY-MM-DD. Keep each summary as the 2 or 3 paragraphs from the notes, in plain, neutral language, with paragraphs separated by a blank line.',
+      'Convert research notes into structured data. Copy facts, URLs, and dates exactly as they appear in the notes. Do not add developments, details, or links that are not in the notes. Write publishedDate as YYYY-MM-DD. The source field must be only the publication or organization name, with no description or commentary. Keep each summary as the 2 or 3 paragraphs from the notes, in plain, neutral language, with paragraphs separated by a blank line.',
     messages: [{ role: 'user', content: `Research notes:\n\n${notes}` }],
     output_config: { format: zodOutputFormat(DigestSchema) },
   })
+  console.log(`Formatting usage: ${JSON.stringify(response.usage)}`)
   if (response.stop_reason === 'refusal') throw new Error('Formatting request was declined')
   if (!response.parsed_output) throw new Error(`Formatting step returned no parseable output (stop_reason: ${response.stop_reason})`)
   return response.parsed_output.items
