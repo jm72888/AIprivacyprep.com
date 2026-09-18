@@ -1,29 +1,70 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Newsreader", ui-serif, Georgia, serif;
-  --font-sans: "Newsreader", ui-serif, Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 
-  --color-paper: #f2ede0;
-  --color-ink: #1a1a1a;
-  --color-rule: #8a8578;
-  --color-accent: #b3271e;
-  --color-accent-soft: #f1ded9;
-  --color-good: #166534;
-  --color-good-soft: #dcfce7;
-  --color-bad: #b3271e;
-  --color-bad-soft: #f1ded9;
-  --color-select: #2563eb;
-  --color-select-soft: #eff6ff;
+  --color-canvas: #f5f7fb;
+  --color-surface: #ffffff;
+  --color-ink: #0b1733;
+  --color-muted: #4f5d77;
+  --color-line: #e2e8f2;
 
-  --color-hero: #161514;
+  --color-brand: #2456e8;
+  --color-brand-strong: #1a43c4;
+  --color-brand-soft: #eaf0ff;
+
+  --color-good: #0b7f57;
+  --color-good-soft: #e2f6ed;
+  --color-bad: #c8322f;
+  --color-bad-soft: #fdeceb;
+
+  --shadow-card: 0 1px 2px rgb(11 23 51 / 0.04), 0 8px 24px -12px rgb(11 23 51 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(36 86 232 / 0.06), 0 18px 40px -16px rgb(36 86 232 / 0.28);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 body {
-  background-color: var(--color-paper);
+  background-color: var(--color-canvas);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background-color: var(--color-brand-soft);
+  color: var(--color-brand-strong);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
 }
 
 @keyframes fade-slide-up {
@@ -34,16 +75,5 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes blink-cursor {
-  0%,
-  49% {
-    opacity: 1;
-  }
-  50%,
-  100% {
-    opacity: 0;
   }
 }

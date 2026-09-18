@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { QuestionCard } from '../components/QuestionCard'
-import { HomeLink } from '../components/HomeLink'
+import { CertBadge } from '../components/CertBadge'
+import { PageShell } from '../components/SiteHeader'
 import { localDataClient } from '../lib/localDataClient'
 import { certifications } from '../data/certifications'
 import type { Attempt, AttemptAnswer, Domain, Question } from '../lib/types'
@@ -79,31 +80,46 @@ export function QuizPage() {
     navigate(`/quiz/${certId}/setup`)
   }
 
+  const progress = ((currentIndex + (submittedIndex !== null ? 1 : 0)) / questions.length) * 100
+
   return (
-    <div className="mx-auto max-w-2xl px-6 py-12">
-      <div className="mb-4 flex flex-wrap items-center gap-2">
-        <HomeLink />
-        {certification && currentDomain && (
-          <>
-            <span className="text-ink/30" aria-hidden="true">
-              |
+    <PageShell>
+      <div className="mx-auto max-w-3xl px-4 py-8 sm:px-6 sm:py-12">
+        <div className="mb-5">
+          <div className="flex flex-wrap items-center justify-between gap-x-4 gap-y-2">
+            <div className="flex min-w-0 items-center gap-2">
+              {certification && <CertBadge certId={certification.id} code={certification.code} />}
+              {currentDomain && <span className="truncate text-sm font-medium text-muted">{currentDomain.name}</span>}
+            </div>
+            <span className="text-sm font-semibold tabular-nums">
+              Question {currentIndex + 1} <span className="font-medium text-muted">of {questions.length}</span>
             </span>
-            <span className="font-mono text-xs uppercase tracking-wider text-ink/70">
-              {certification.code} &middot; {currentDomain.name}
-            </span>
-          </>
-        )}
+          </div>
+          <div
+            className="mt-3 h-2 overflow-hidden rounded-full bg-line"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={Math.round(progress)}
+            aria-label="Quiz progress"
+          >
+            <div
+              className="h-full rounded-full bg-brand transition-transform duration-500 ease-out"
+              style={{ width: '100%', transform: `translateX(-${100 - progress}%)` }}
+            />
+          </div>
+        </div>
+        <QuestionCard
+          key={current.id}
+          question={current}
+          index={currentIndex}
+          total={questions.length}
+          submittedIndex={submittedIndex}
+          onSubmit={handleSubmit}
+          onNext={handleNext}
+          onBack={handleBack}
+        />
       </div>
-      <QuestionCard
-        key={current.id}
-        question={current}
-        index={currentIndex}
-        total={questions.length}
-        submittedIndex={submittedIndex}
-        onSubmit={handleSubmit}
-        onNext={handleNext}
-        onBack={handleBack}
-      />
-    </div>
+    </PageShell>
   )
 }

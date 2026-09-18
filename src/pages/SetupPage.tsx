@@ -1,21 +1,13 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { DomainPicker } from '../components/DomainPicker'
-import { Button } from '../components/Button'
-import { HomeLink } from '../components/HomeLink'
+import { Button, buttonClasses } from '../components/Button'
+import { CertBadge } from '../components/CertBadge'
+import { PageShell } from '../components/SiteHeader'
+import { ArrowLeft, ArrowRight } from '../components/icons'
+import { certTheme } from '../lib/certTheme'
 import { localDataClient } from '../lib/localDataClient'
 import type { Certification, Domain } from '../lib/types'
-
-function CertName({ name }: { name: string }) {
-  const slash = name.indexOf('/')
-  if (slash === -1) return <>{name}</>
-  return (
-    <>
-      {name.slice(0, slash + 1)}
-      <span className="text-accent">{name.slice(slash + 1)}</span>
-    </>
-  )
-}
 
 export function SetupPage() {
   const { certId = '' } = useParams()
@@ -61,34 +53,50 @@ export function SetupPage() {
   if (!certification) return null
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-12">
-      <HomeLink />
-      <h1 className="mt-4 font-display text-[2.34375rem] italic">
-        <CertName name={certification.name} />
-      </h1>
-      <p className="mt-2 text-[1.09375rem] text-ink/70">Choose which domains to practice.</p>
-
-      <div className="mt-6 flex items-center justify-between border-t border-rule/30 pt-4">
-        <span className="font-mono text-xs uppercase tracking-wide text-ink/70">
-          {selected.size} of {domains.length} domains selected
-        </span>
-        <button onClick={toggleAll} className="font-mono text-xs uppercase tracking-wide text-accent hover:underline">
-          {allSelected ? 'Deselect all' : 'Select all'}
-        </button>
-      </div>
-
-      <div className="mt-4">
-        <DomainPicker domains={domains} selected={selected} onToggle={toggleDomain} />
-      </div>
-
-      <div className="mt-8 flex items-center justify-between">
-        <Link to="/">
-          <Button variant="secondary">&larr; Back</Button>
+    <PageShell>
+      <div className="mx-auto max-w-3xl px-4 py-10 sm:px-6 sm:py-14">
+        <Link
+          to="/#certifications"
+          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors duration-200 hover:text-ink"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          All certifications
         </Link>
-        <Button disabled={selected.size === 0} onClick={startQuiz}>
-          Start quiz
-        </Button>
+
+        <div className="mt-6 animate-[fade-slide-up_300ms_ease-out]">
+          <CertBadge certId={certification.id} code={certification.code} />
+          <h1 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{certTheme(certification.id).fullName}</h1>
+          <p className="mt-3 max-w-2xl text-lg leading-relaxed text-muted">{certification.description}</p>
+        </div>
+
+        <div className="mt-10 rounded-2xl bg-surface p-5 shadow-card ring-1 ring-line sm:p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="font-semibold">Choose your domains</h2>
+              <p className="mt-0.5 text-sm text-muted tabular-nums">
+                {selected.size} of {domains.length} selected
+              </p>
+            </div>
+            <Button variant="ghost" onClick={toggleAll} className="px-3 py-2 text-brand hover:text-brand-strong">
+              {allSelected ? 'Clear all' : 'Select all'}
+            </Button>
+          </div>
+
+          <div className="mt-5">
+            <DomainPicker domains={domains} selected={selected} onToggle={toggleDomain} />
+          </div>
+
+          <div className="mt-6 flex items-center justify-between gap-3 border-t border-line pt-5">
+            <Link to="/#certifications" className={buttonClasses('ghost')}>
+              Cancel
+            </Link>
+            <Button disabled={selected.size === 0} onClick={startQuiz}>
+              Start quiz
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
+        </div>
       </div>
-    </div>
+    </PageShell>
   )
 }

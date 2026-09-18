@@ -1,47 +1,39 @@
-function Citation({
-  n,
-  label,
-  value,
-  pointer = false,
-}: {
-  n: number
-  label: string
-  value: string
-  pointer?: boolean
-}) {
-  return (
-    <div className="flex items-baseline gap-3 border-t border-rule/30 py-2 first:border-t-0">
-      <span className="w-4 shrink-0 text-accent" aria-hidden={!pointer}>
-        {pointer && (
-          <span className="inline-block animate-[blink-cursor_1s_step-end_infinite]">&rarr;</span>
-        )}
-      </span>
-      <span className="font-mono text-xs text-ink/70">REF.{n}</span>
-      <span className="flex-1 text-[1.09375rem] text-ink/70">{label}</span>
-      <span className="font-mono text-sm font-medium">{value}</span>
-    </div>
-  )
-}
+const COSTS = [
+  { label: 'CIPP exam fee', value: '$550' },
+  { label: 'AIGP exam fee', value: '$649–$799' },
+  { label: 'Annual IAPP membership', value: '$275–$295' },
+  { label: 'Formal training course', value: '$995–$1,195' },
+]
 
 export function ValueProp() {
   return (
-    <section className="mx-auto max-w-2xl border-b border-rule/30 px-6 pb-10 pt-12">
-      <p className="font-mono text-xs uppercase tracking-widest text-accent">Notice</p>
-      <h2 className="mt-2 font-display text-[1.625rem] italic sm:text-[2rem]">
-        Certification isn&apos;t cheap. Practice here for free.
-      </h2>
-      <p className="mt-4 text-[1.09375rem] leading-relaxed text-ink/70 sm:text-[1.25rem]">
-        Exam fees are just the start. Add optional extras like annual IAPP
-        membership, textbooks, or digital practice exams, and prep can
-        easily top $1,000 before exam day. Get comfortable with the
-        material here first &mdash; it won&apos;t cost you anything.
-      </p>
-      <div className="mt-6">
-        <Citation n={1} label="CIPP exam fee" value="$550" />
-        <Citation n={2} label="AIGP exam fee" value="$649–$799" />
-        <Citation n={3} label="Annual IAPP membership" value="$275–$295" />
-        <Citation n={4} label="Formal training course" value="$995–$1,195" />
-        <Citation n={5} label="Practicing here" value="$0" pointer />
+    <section className="border-y border-line bg-surface">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-2 lg:gap-16">
+        <div>
+          <p className="text-sm font-semibold text-brand">Why it&apos;s free</p>
+          <h2 className="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">
+            Certification isn&apos;t cheap. Practice here for free.
+          </h2>
+          <p className="mt-4 max-w-lg text-lg leading-relaxed text-muted">
+            Exam fees are just the start. Add annual IAPP membership, textbooks, or paid practice exams,
+            and prep can easily top $1,000 before exam day. Get comfortable with the material here first.
+          </p>
+        </div>
+
+        <div className="rounded-2xl bg-canvas p-2 ring-1 ring-line">
+          <dl className="divide-y divide-line rounded-xl bg-surface px-5 shadow-card">
+            {COSTS.map((cost) => (
+              <div key={cost.label} className="flex items-center justify-between gap-4 py-4">
+                <dt className="text-muted">{cost.label}</dt>
+                <dd className="font-semibold tabular-nums">{cost.value}</dd>
+              </div>
+            ))}
+          </dl>
+          <div className="mt-2 flex items-center justify-between gap-4 rounded-xl bg-good px-5 py-4 text-white">
+            <span className="font-semibold">Practicing here</span>
+            <span className="text-2xl font-extrabold tabular-nums">$0</span>
+          </div>
+        </div>
       </div>
     </section>
   )
