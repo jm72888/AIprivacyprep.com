@@ -1,485 +1,605 @@
 import type { Question } from '../../../lib/types'
 
-// Domain 4: AI Law & Standards (questions 9-40)
+// Domain 4: AI Law & Standards
 export const lawQuestions: Question[] = [
+  {
+    id: 'aigp-law-1',
+    domainId: 'aigp-law',
+    prompt:
+      "Which statement best describes how obligations scale across the EU AI Act's risk categories for AI systems that are allowed on the market?",
+    choices: [
+      "High-risk: extensive requirements; some limited-risk systems: transparency; minimal-risk: nothing specific",
+      "Limited-risk systems carry the heaviest documentation duties, since they interact directly with people",
+      "Permitted systems undergo conformity assessment, with its depth scaled to the risk category",
+      "Minimal-risk systems need to register in the EU database but otherwise face no specific requirements",
+    ],
+    correctIndex: 0,
+    explanation:
+      "High-risk systems face requirements on risk management, data, documentation, oversight, and conformity assessment. Systems like chatbots and deepfake generators carry Article 50 transparency duties, and minimal-risk systems have no specific new obligations beyond general ones such as AI literacy. Conformity assessment and registration apply to high-risk systems.",
+  },
+  {
+    id: 'aigp-law-2',
+    domainId: 'aigp-law',
+    prompt:
+      "Before development, a team documents a system's intended purpose, context of use, affected stakeholders, and potential impacts. Under the NIST AI RMF, which function is this?",
+    choices: [
+      "Govern",
+      "Measure",
+      "Map",
+      "Manage",
+    ],
+    correctIndex: 2,
+    explanation:
+      "Map establishes context: intended purposes, settings, stakeholders, and potential impacts, which frames the risks. Govern sets organizational policies and culture, Measure analyzes and tracks risks with metrics, and Manage prioritizes and acts on them.",
+  },
+  {
+    id: 'aigp-law-3',
+    domainId: 'aigp-law',
+    prompt:
+      "An organization wants a certifiable standard for an AI management system, structured like ISO/IEC 27001 for information security. Which standard fits?",
+    choices: [
+      "ISO/IEC 23894",
+      "ISO/IEC 22989",
+      "ISO/IEC 42001",
+      "ISO 31000",
+    ],
+    correctIndex: 2,
+    explanation:
+      "ISO/IEC 42001 specifies requirements for an AI management system and can be certified against. ISO/IEC 23894 gives guidance on AI risk management, ISO/IEC 22989 defines AI concepts and terminology, and ISO 31000 is general risk management guidance; none of those is a certifiable management system standard.",
+  },
+  {
+    id: 'aigp-law-4',
+    domainId: 'aigp-law',
+    prompt:
+      "Which of these is one of the OECD's values-based AI Principles?",
+    choices: [
+      "Accountability: AI actors should be accountable for the proper functioning of AI systems",
+      "Economic returns: AI should deliver measurable productivity gains for the organizations using it",
+      "Openness: AI systems should be released with publicly available code and model weights",
+      "Autonomy: AI systems should minimize human intervention wherever it is technically safe to do so",
+    ],
+    correctIndex: 0,
+    explanation:
+      "The OECD's values-based principles cover inclusive growth and well-being; human rights and democratic values including fairness and privacy; transparency and explainability; robustness, security, and safety; and accountability. Profitability, open-sourcing, and autonomy are not among them.",
+  },
+  {
+    id: 'aigp-law-5',
+    domainId: 'aigp-law',
+    prompt:
+      "A bank's loan officer 'reviews' every AI credit decision but approves over 99% within seconds without examining the file. Under the GDPR, why might these still count as solely automated decisions?",
+    choices: [
+      "Any decision in which AI plays a material role counts as solely automated under the GDPR",
+      "Token review without real authority or consideration does not take a decision outside Article 22",
+      "Credit decisions are treated as solely automated by definition, whatever review takes place",
+      "The officer does not sign each decision, and a signature is what establishes human involvement",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Regulatory guidance on Article 22 says human involvement must be meaningful: the reviewer needs the authority and competence to change the outcome and must actually consider the relevant information. Rubber-stamping does not qualify. AI involvement alone does not make a decision solely automated, and signatures are not the test.",
+  },
+  {
+    id: 'aigp-law-6',
+    domainId: 'aigp-law',
+    prompt:
+      "Which of the following is a prohibited practice under the EU AI Act, rather than a high-risk use?",
+    choices: [
+      "AI used by schools to evaluate students' exam performance and assign grades",
+      "AI used by employers to screen and rank job applications from candidates",
+      "AI used by lenders to assess the creditworthiness of individual loan applicants",
+      "AI that builds facial recognition databases by untargeted scraping of online images",
+    ],
+    correctIndex: 3,
+    explanation:
+      "Untargeted scraping of facial images from the internet or CCTV to build facial recognition databases is prohibited under Article 5. Education assessment, hiring, and credit scoring are listed high-risk uses that are allowed subject to requirements.",
+  },
+  {
+    id: 'aigp-law-7',
+    domainId: 'aigp-law',
+    prompt:
+      "After identifying risks for a new system, a team develops metrics to benchmark error rates by subgroup and tracks them over time. Which NIST AI RMF function is this?",
+    choices: [
+      "Map",
+      "Measure",
+      "Govern",
+      "Manage",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Measure uses quantitative and qualitative methods to analyze, assess, benchmark, and monitor AI risks. Map establishes context, Govern sets policies and culture, and Manage prioritizes and responds to risks based on those measurements.",
+  },
+  {
+    id: 'aigp-law-8',
+    domainId: 'aigp-law',
+    prompt:
+      "A policymaker proposes applying the same strict requirements to every AI system regardless of use. What is the strongest argument for a risk-based approach instead?",
+    choices: [
+      "It lets large companies rely on their own governance programs instead of the rules",
+      "It allows each company to decide which requirements apply to its own systems",
+      "It matches oversight to potential harm, focusing resources where risk is greatest",
+      "It removes the need for a legal definition of what counts as an AI system",
+    ],
+    correctIndex: 2,
+    explanation:
+      "Risk-based regulation scales obligations to the potential for harm, avoiding heavy burdens on low-risk uses while concentrating scrutiny where it matters. It does not exempt large companies, let companies self-select their rules, or remove the need for definitions.",
+  },
   {
     id: 'aigp-law-9',
     domainId: 'aigp-law',
     prompt:
-      "Under the EU AI Act, what is the maximum fine for engaging in a prohibited AI practice?",
+      "Under the EU AI Act, what is the maximum administrative fine for placing a prohibited AI practice on the market?",
     choices: [
-      'Up to EUR 7.5 million or 1% of worldwide annual turnover',
-      'Up to EUR 15 million or 3% of worldwide annual turnover',
-      'Up to EUR 20 million or 4% of worldwide annual turnover',
-      'Up to EUR 35 million or 7% of worldwide annual turnover',
+      "EUR 20 million or 4% of worldwide annual turnover, whichever is higher",
+      "EUR 15 million or 3% of worldwide annual turnover, whichever is higher",
+      "EUR 35 million or 7% of worldwide annual turnover, whichever is higher",
+      "EUR 7.5 million or 1% of worldwide annual turnover, whichever is higher",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'Prohibited practices carry the highest tier: up to EUR 35 million or 7% of worldwide annual turnover, whichever is higher. Most other violations are capped at EUR 15 million or 3%, and supplying incorrect information to authorities at EUR 7.5 million or 1%. The 20 million / 4% tier comes from the GDPR.',
+      "Prohibited practices carry the top tier of EUR 35 million or 7%. Most other violations are capped at EUR 15 million or 3%, and supplying incorrect information at EUR 7.5 million or 1%. The 20 million / 4% figure is the GDPR's top tier. For SMEs, the lower of the two amounts applies.",
   },
   {
     id: 'aigp-law-10',
     domainId: 'aigp-law',
     prompt:
-      "A US company with no EU offices provides an AI resume-screening service to an employer in Germany, and the system's outputs are used there. Does the EU AI Act apply to the US company?",
+      "A US company with no EU presence sells an AI resume-screening service to a German employer, which uses it to evaluate candidates in Germany. Does the EU AI Act apply to the US company?",
     choices: [
-      'No, because the company has no office, staff, servers, or other establishment in the EU',
-      'Yes, because the Act covers non-EU providers whose system outputs are used in the EU',
-      'Only if the company has voluntarily registered with an EU market authority',
-      'Only if the company processes personal data of EU citizens as a controller',
+      "No, the Act covers providers and deployers established in the EU",
+      "No, the German employer is covered as the deployer, but the vendor is not",
+      "Only if the US company processes EU residents' personal data under the GDPR",
+      "Yes, as a provider placing a system on the EU market, wherever it is established",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'The AI Act has extraterritorial reach: it applies to providers placing systems on the EU market, and to providers and deployers in third countries where the system\'s output is used in the EU. Its scope turns on market placement and use, not only on processing personal data.',
+      "The Act covers providers placing systems on the EU market regardless of where they are established, and also third-country providers and deployers whose system outputs are used in the EU. The German employer has deployer obligations too. Scope is based on market placement and use, not on GDPR processing.",
   },
   {
     id: 'aigp-law-11',
     domainId: 'aigp-law',
     prompt:
-      "Under the EU AI Act, a software company builds an AI credit-scoring system and sells it to a bank, which uses it to assess customers. What are their respective roles?",
+      "Under the EU AI Act, which obligation falls on a deployer of a high-risk system, rather than on its provider?",
     choices: [
-      'The software company is the provider and the bank is the deployer',
-      'The bank is the provider and the software company is the deployer',
-      'Both are providers with identical obligations',
-      'Both are deployers, because neither is an EU authority',
+      "Carrying out the conformity assessment before the system is put into service",
+      "Drawing up the technical documentation that describes the system's design",
+      "Assigning competent human oversight and following the instructions for use",
+      "Operating the quality management system that governs the system's design",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation:
-      'The provider develops the system and places it on the market under its own name, while the deployer uses it under its authority. Providers carry most design and conformity obligations; deployers have their own duties, such as human oversight and monitoring.',
+      "Deployers must use high-risk systems according to the instructions for use, assign human oversight to people with the necessary competence and authority, monitor operation, and keep logs under their control. Conformity assessment, technical documentation, and the quality management system are provider obligations.",
   },
   {
     id: 'aigp-law-12',
     domainId: 'aigp-law',
     prompt:
-      "A bank buys a high-risk AI system, substantially modifies it, and markets the modified version to other banks under its own brand. How does the EU AI Act treat the bank?",
+      "A bank buys a high-risk AI system and, without changing it, starts using it for a purpose the provider did not intend, which is itself a high-risk use. How does the EU AI Act treat the bank?",
     choices: [
-      'As a deployer only, since it did not build the original system',
-      'As exempt, because the original provider remains fully responsible',
-      'As a provider, taking on the provider\'s obligations',
-      'As a distributor with no compliance obligations',
+      "As a deployer only, since it made no technical changes to the system itself",
+      "As a provider, since changing the intended purpose to a high-risk use shifts duties to it",
+      "As a distributor, since it resells the system's outputs without developing the system",
+      "As exempt, since the original provider remains responsible for how its system is used",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'Under the AI Act, a deployer or other party becomes a provider if it puts its name or trademark on a high-risk system, makes a substantial modification, or changes its intended purpose so that it becomes high-risk. It then takes on provider obligations.',
+      "Under Article 25, a party becomes a provider if it puts its name on a high-risk system, makes a substantial modification, or changes the intended purpose in a way that makes the system high-risk. Technical changes are not required for the last route.",
   },
   {
     id: 'aigp-law-13',
     domainId: 'aigp-law',
     prompt:
-      "Which obligation applies to all providers of general-purpose AI (GPAI) models under the EU AI Act, not only those whose models pose systemic risk?",
+      "A provider releases a general-purpose AI model under a free and open-source license, and the model does not pose systemic risk. Which EU AI Act obligation still applies?",
     choices: [
-      'Conducting adversarial testing of the model and reporting serious incidents to the AI Office',
-      'Obtaining CE marking through a notified body',
-      'Registering every downstream application in the EU database',
-      'Maintaining a copyright policy and publishing a summary of training content',
+      "Maintaining a copyright policy and publishing a training-content summary",
+      "Conducting adversarial testing and reporting serious incidents to the AI Office",
+      "Obtaining CE marking through a notified body before the model is released",
+      "None, since free and open-source GPAI models are exempt from the Act's GPAI rules",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation:
-      'All GPAI providers must keep technical documentation, provide information to downstream providers, maintain a policy to comply with EU copyright law, and publish a sufficiently detailed summary of training content. Adversarial testing and incident reporting are additional duties for models with systemic risk.',
+      "Open-source GPAI models without systemic risk are exempt from some documentation duties, but providers must still maintain a copyright compliance policy and publish a training-content summary. Adversarial testing and incident reporting apply to systemic-risk models, and CE marking concerns high-risk systems.",
   },
   {
     id: 'aigp-law-14',
     domainId: 'aigp-law',
     prompt:
-      "Under the EU AI Act, when is a general-purpose AI model presumed to have high-impact capabilities, and therefore systemic risk?",
+      "Under the EU AI Act, when is a general-purpose AI model presumed to have high-impact capabilities, and so systemic risk?",
     choices: [
-      'When it has more than 10,000 registered business users across the EU',
-      'When the cumulative compute used to train it exceeds 10^25 floating-point operations',
-      'When it can generate text, images, audio, and video from a single prompt or conversation',
-      'When its provider has worldwide annual revenue above EUR 1 billion',
+      "When more than 10,000 registered business users in the EU access the model",
+      "When the model can generate text, images, and audio from a single prompt",
+      "When the provider's worldwide annual turnover exceeds EUR 1 billion",
+      "When cumulative training compute exceeds 10^25 floating-point operations",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'The Act presumes high-impact capabilities when training compute exceeds 10^25 FLOPs, and the Commission can also designate models based on other criteria. User counts, modality, and provider revenue do not trigger the presumption.',
+      "The Act presumes high-impact capabilities above 10^25 FLOPs of training compute, and the Commission can also designate models based on other criteria, such as reach, which is where user numbers matter. User counts alone do not trigger the presumption, and modality and turnover are not criteria.",
   },
   {
     id: 'aigp-law-15',
     domainId: 'aigp-law',
     prompt:
-      "A company deploys an AI system that generates realistic video of real people for an advertising campaign. Under the EU AI Act's transparency rules, what must the deployer do?",
+      "A company uses an AI system to generate a realistic video of a real politician for a satirical show that is clearly presented as satire. What does the EU AI Act require of the deployer?",
     choices: [
-      'Disclose that the content has been artificially generated or manipulated',
-      'Obtain a conformity assessment from a notified body before the campaign is released',
-      'Register the campaign in the EU database as a high-risk AI system',
-      'Nothing, because commercial advertising is exempt from the AI Act',
+      "Nothing, since evidently satirical content is exempt from the deepfake disclosure rules",
+      "A conformity assessment, since deepfakes of public figures are classed as high-risk",
+      "Disclosure that the content is generated, in a way that does not hamper the work",
+      "Written consent from the politician, which the Act requires for deepfakes of real people",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation:
-      'Article 50 requires deployers of systems that generate deepfakes to disclose that the content is artificial, with limited adjustments for evidently artistic or satirical works. Providers must also mark synthetic outputs in a machine-readable way. This is a transparency duty, not a high-risk classification.',
+      "Deployers must disclose deepfakes. For evidently artistic, creative, satirical, or fictional works, the duty is limited to disclosing the existence of generated content in a way that does not hamper the work, rather than removed entirely. Deepfakes are not high-risk by default, and the Act does not impose a consent requirement.",
   },
   {
     id: 'aigp-law-16',
     domainId: 'aigp-law',
     prompt:
-      "Under the EU AI Act, which deployers must carry out a fundamental rights impact assessment before using certain high-risk AI systems?",
+      "Under the EU AI Act, which deployer must carry out a fundamental rights impact assessment before using a high-risk system?",
     choices: [
-      'All deployers of any AI system, regardless of its risk classification',
-      'Only providers of general-purpose AI models with systemic risk',
-      'Public bodies, public-service providers, and certain credit and insurance deployers',
-      'Only deployers with more than 250 employees or more than EUR 50 million in annual turnover',
+      "A private bank using AI to evaluate the creditworthiness of individuals",
+      "A private retailer using a high-risk AI system to allocate shifts to warehouse staff",
+      "Any company with more than 250 employees that deploys a high-risk AI system",
+      "A provider of a general-purpose AI model that has been classified as systemic-risk",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      'Article 27 requires a fundamental rights impact assessment from bodies governed by public law, private entities providing public services, and deployers of high-risk systems for creditworthiness assessment or life and health insurance pricing. It is not tied to company size and does not cover all deployers.',
+      "Article 27 applies to public bodies, private entities providing public services, and deployers of high-risk systems for creditworthiness evaluation or life and health insurance pricing. Company size is not the trigger, a staff-scheduling tool is not in these categories, and GPAI providers are not deployers.",
   },
   {
     id: 'aigp-law-17',
     domainId: 'aigp-law',
     prompt:
-      "A company uses several AI tools internally but builds none of them. Which EU AI Act obligation applies to it regardless of the tools' risk level?",
+      "Which EU AI Act obligation applied from February 2025, the same date as the prohibitions, to both providers and deployers regardless of system risk?",
     choices: [
-      'Registering each tool it uses in the EU database for high-risk systems',
-      'Conducting its own conformity assessment for each tool before use',
-      'Publishing a summary of the training data used by each tool',
-      'Taking measures to ensure sufficient AI literacy among staff who use AI',
+      "Registering high-risk systems in the EU database before they are placed on the market",
+      "Taking measures to ensure a sufficient level of AI literacy among staff",
+      "Carrying out fundamental rights impact assessments before deploying AI systems",
+      "Setting up post-market monitoring for every AI system placed on the market",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      'Article 4 requires both providers and deployers to take measures to ensure a sufficient level of AI literacy among staff dealing with AI systems. It applies broadly, not just to high-risk systems.',
+      "Article 4's AI literacy duty and the Article 5 prohibitions applied from 2 February 2025, and the literacy duty covers providers and deployers generally. Registration, fundamental rights impact assessments, and post-market monitoring are tied to high-risk systems and apply later.",
   },
   {
     id: 'aigp-law-18',
     domainId: 'aigp-law',
     prompt:
-      "What is the purpose of the AI regulatory sandboxes that EU member states must establish under the AI Act?",
+      "A start-up tests an innovative AI system in an EU AI regulatory sandbox. Which statement is accurate?",
     choices: [
-      'To exempt participating companies from all of the AI Act\'s obligations on a permanent basis',
-      'To give a controlled environment to develop and test AI under regulatory supervision',
-      'To store copies of all high-risk AI systems for inspection',
-      'To let regulators develop their own AI systems',
+      "Participation exempts the system from high-risk requirements once it leaves the sandbox",
+      "Participation shifts liability for harm to third parties onto the supervising authority",
+      "It permits supervised development and testing; the start-up remains liable for harm to others",
+      "Sandboxes are available only to providers of general-purpose AI models with systemic risk",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      'Regulatory sandboxes let organizations, with priority access for SMEs and start-ups, develop and test innovative AI under supervision before market placement. Participation does not grant a permanent exemption from the rules.',
+      "Sandboxes provide a controlled environment for development and testing under regulatory supervision, with priority access for SMEs and start-ups. Participants remain liable under applicable liability law for damage to third parties, though good-faith compliance with the sandbox plan can limit administrative fines. There is no permanent exemption.",
   },
   {
     id: 'aigp-law-19',
     domainId: 'aigp-law',
     prompt:
-      "A lender uses a fully automated system to reject online loan applications with no human involvement. Under GDPR Article 22, which statement is correct?",
+      "A lender relies on explicit consent to make fully automated loan decisions under GDPR Article 22. Which safeguard must it still provide?",
     choices: [
-      'Such decisions are always prohibited, with no exceptions for contracts or consent',
-      'Such decisions are allowed only if the lender is an EU-licensed bank or other credit institution',
-      'Individuals may object only after the loan term would have ended, not at the time',
-      'They are restricted unless an exception applies, and safeguards such as human review apply',
+      "The rights to human intervention, to express a view, and to contest the decision",
+      "A guarantee that the model processes no special-category data about the applicant",
+      "Annual registration of the decision-making model with the supervisory authority",
+      "Disclosure of the model's source code to applicants who request it",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation:
-      'Article 22 gives people the right not to be subject to solely automated decisions with legal or similarly significant effects, unless the decision is necessary for a contract, authorized by law, or based on explicit consent. Even then, safeguards such as the right to human intervention and to contest the decision apply.',
+      "When solely automated decisions rely on contract necessity or explicit consent, the controller must still provide at least human intervention, the right to express a view, and the right to contest. The other options are not Article 22 requirements; special-category data has its own additional restrictions.",
   },
   {
     id: 'aigp-law-20',
     domainId: 'aigp-law',
     prompt:
-      "Under the GDPR, which planned AI use would most clearly require a data protection impact assessment?",
+      "A DPIA for an AI profiling system finds high residual risk that the controller cannot mitigate. What does the GDPR require next?",
     choices: [
-      'Systematic, extensive profiling that produces decisions with legal effects on people',
-      'Using a spell-checker on internal documents that mention employees by name',
-      'Training a forecasting model on fully anonymized historical weather data',
-      'Using AI to sort the office supply inventory and automatically reorder paper and toner',
+      "Proceed, since documenting the residual risk in the DPIA meets the accountability duty",
+      "Notify each affected individual of the residual risk before processing begins",
+      "Obtain certification from an accredited body confirming the risk is acceptable",
+      "Consult the supervisory authority before starting the processing",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation:
-      'Article 35 requires a DPIA for processing likely to result in high risk, explicitly including systematic and extensive evaluation of people based on automated processing, including profiling, that produces legal or similarly significant effects. The other examples involve little or no personal data risk.',
+      "Under Article 36, when a DPIA shows high risk that cannot be mitigated, the controller must consult the supervisory authority before processing. Documentation alone is not enough, and neither individual notification nor certification replaces prior consultation.",
   },
   {
     id: 'aigp-law-21',
     domainId: 'aigp-law',
     prompt:
-      "In its December 2024 opinion on AI models, what did the European Data Protection Board say about using legitimate interest as a legal basis for developing AI models with personal data?",
+      "According to the European Data Protection Board's 2024 opinion on AI models, which statement is accurate?",
     choices: [
-      'Legitimate interest can never be used for AI development; consent is always required',
-      'Legitimate interest applies automatically to any AI model that serves a business purpose',
-      'It may be possible, but only after passing the three-step necessity and balancing test',
-      'Only explicit consent or a specific EU law can justify using personal data for AI training',
+      "Models trained on personal data are anonymous by default, so the GDPR stops applying",
+      "Legitimate interest is excluded as a basis for training AI models on personal data",
+      "Legitimate interest may work, subject to the three-step necessity and balancing test",
+      "Explicit consent is the sole lawful basis for training AI models on personal data",
     ],
     correctIndex: 2,
     explanation:
-      'The EDPB\'s Opinion 28/2024 found that legitimate interest may be a valid legal basis for developing and deploying AI models, but controllers must pass the three-step test covering a legitimate interest, necessity, and balancing against individuals\' rights. It also noted that AI models trained on personal data are not automatically anonymous.',
+      "The EDPB's Opinion 28/2024 said legitimate interest may be relied on for AI model development if the three-step test is met, and that models trained on personal data are not automatically anonymous; anonymity must be assessed case by case.",
   },
   {
     id: 'aigp-law-22',
     domainId: 'aigp-law',
     prompt:
-      "An individual subject to a solely automated decision about them makes a GDPR access request. Beyond their personal data, what information are they entitled to?",
+      "An individual subject to a solely automated decision makes a GDPR access request. What are they entitled to beyond their personal data?",
     choices: [
-      'The full source code of the model and its configuration files',
-      'Meaningful information about the logic involved and the likely consequences for them',
-      'The names and decision outcomes of every other person whose data was processed by the system',
-      'A copy of the complete training dataset used to build the model',
+      "The model's full source code and weights, so the individual can verify the decision",
+      "Meaningful information about the logic involved and the likely consequences",
+      "The personal data of other individuals processed by the same decision system",
+      "A complete copy of the training dataset used to build the decision system",
     ],
     correctIndex: 1,
     explanation:
-      'For automated decisions covered by Article 22, Article 15 gives a right to meaningful information about the logic involved and the significance and envisaged consequences of the processing. It does not require disclosing source code, training data, or other people\'s data.',
+      "Articles 13 to 15 require meaningful information about the logic involved in Article 22 decisions and their significance and envisaged consequences. This does not extend to source code, others' data, or full training datasets, and trade secrets are weighed against the right.",
   },
   {
     id: 'aigp-law-23',
     domainId: 'aigp-law',
     prompt:
-      "Which NIST AI Risk Management Framework function is described as cross-cutting, establishing policies, accountability structures, and a culture of risk management that informs the other three functions?",
+      "Which NIST AI RMF function covers establishing policies, accountability structures, workforce diversity, and processes for managing third-party AI risk, and is described as cross-cutting?",
     choices: [
-      'Map',
-      'Measure',
-      'Manage',
-      'Govern',
+      "Govern",
+      "Map",
+      "Measure",
+      "Manage",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation:
-      'Govern is the cross-cutting function that sets organizational policies, roles, accountability, and culture. Map establishes context and identifies risks, Measure analyzes and tracks them, and Manage prioritizes and acts on them.',
+      "Govern is the cross-cutting function that establishes culture, policies, roles, and processes, including for third-party risk, and informs the other three. Map sets context, Measure assesses risks, and Manage acts on them.",
   },
   {
     id: 'aigp-law-24',
     domainId: 'aigp-law',
     prompt:
-      "Having measured the risks of a new AI system, a team now decides which risks to treat first, allocates resources to mitigations, and plans how to respond to and recover from incidents. Which NIST AI RMF function is this?",
+      "A team has measured risks and now decides which to treat first, allocates resources, plans responses to incidents, and monitors deployed systems. Which NIST AI RMF function is this?",
     choices: [
-      'Manage',
-      'Map',
-      'Govern',
-      'Measure',
+      "Map",
+      "Govern",
+      "Measure",
+      "Manage",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation:
-      'The Manage function covers prioritizing risks, allocating resources, and planning responses and recovery, based on what Map and Measure produced. Govern sets the overarching policies and accountability.',
+      "Manage allocates resources to mapped and measured risks, plans and executes responses, and includes post-deployment monitoring and incident communication. Govern sets overarching policy, and Map and Measure come before prioritization.",
   },
   {
     id: 'aigp-law-25',
     domainId: 'aigp-law',
     prompt:
-      "Which of the following is one of the characteristics of trustworthy AI listed in the NIST AI Risk Management Framework?",
+      "In the NIST AI RMF, which trustworthiness characteristic is described as a necessary condition for the others, and which one as spanning all of them?",
     choices: [
-      'Profitable and scalable',
-      'Open source and freely available',
-      'Privacy-enhanced',
-      'Fully autonomous',
+      "Safe is the foundation; explainable and interpretable spans the others",
+      "Valid and reliable is the foundation; accountable and transparent spans the others",
+      "Fair with harmful bias managed is the foundation; privacy-enhanced spans the others",
+      "Secure and resilient is the foundation; safe relates to each of the others",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'NIST lists valid and reliable; safe; secure and resilient; accountable and transparent; explainable and interpretable; privacy-enhanced; and fair with harmful bias managed. Profitability, open source status, and autonomy are not trustworthiness characteristics.',
+      "NIST depicts valid and reliable as a necessary base for trustworthiness and accountable and transparent as relating to all the other characteristics. The remaining characteristics are safe; secure and resilient; explainable and interpretable; privacy-enhanced; and fair with harmful bias managed.",
   },
   {
     id: 'aigp-law-26',
     domainId: 'aigp-law',
     prompt:
-      "An organization wants NIST guidance specifically on risks such as confabulation, harmful content, and information integrity that are unique to or worsened by generative AI. Which document should it consult?",
+      "An organization wants NIST guidance on risks such as confabulation, information integrity, and harmful content that are specific to or heightened by generative AI. Which document fits?",
     choices: [
-      'NIST SP 800-53 security controls',
-      'The NIST Cybersecurity Framework (CSF) 2.0',
-      'The NIST Privacy Framework',
-      'The NIST AI 600-1 Generative AI Profile',
+      "NIST SP 800-53",
+      "The NIST Privacy Framework",
+      "NIST AI 600-1, the Generative AI Profile",
+      "The NIST Cybersecurity Framework 2.0",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'NIST AI 600-1, a companion to the AI RMF published in 2024, identifies risks specific to generative AI and suggests actions to manage them. The other documents address security or privacy more broadly.',
+      "NIST AI 600-1, published in 2024 as a profile of the AI RMF, identifies risks unique to or worsened by generative AI and suggests actions. SP 800-53 is a security control catalog, and the Privacy and Cybersecurity Frameworks address broader domains.",
   },
   {
     id: 'aigp-law-27',
     domainId: 'aigp-law',
     prompt:
-      "How does ISO/IEC 23894 differ from ISO/IEC 42001?",
+      "An organization certified to ISO/IEC 42001 is asked which document it would use for more detailed guidance on identifying and treating AI-specific risks. Which is the best answer?",
     choices: [
-      'ISO/IEC 23894 is a certifiable management system standard, and 42001 is guidance only',
-      'ISO/IEC 23894 is risk management guidance; 42001 sets certifiable management system requirements',
-      'ISO/IEC 23894 applies only in the EU, while ISO/IEC 42001 applies only in the United States',
-      'They are the same AI standard, published under two numbers for different industries',
+      "ISO/IEC 27001",
+      "ISO/IEC 22989",
+      "ISO 9001",
+      "ISO/IEC 23894",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'ISO/IEC 23894 provides guidance on managing AI risk, building on ISO 31000, while ISO/IEC 42001 sets requirements for an AI management system that organizations can be certified against. Both are international standards.',
+      "ISO/IEC 23894 provides guidance on AI risk management, building on ISO 31000, and complements 42001's management system requirements. ISO/IEC 27001 covers information security, ISO/IEC 22989 covers AI terminology, and ISO 9001 covers quality management.",
   },
   {
     id: 'aigp-law-28',
     domainId: 'aigp-law',
     prompt:
-      "Under New York City Local Law 144, what must an employer do before using an automated employment decision tool to screen candidates for jobs in the city?",
+      "Under New York City Local Law 144, what must an employer do before using an automated employment decision tool for candidates in the city?",
     choices: [
-      'Obtain a bias audit by an independent auditor, publish a summary, and notify candidates',
-      'Obtain approval from the New York State Attorney General and register the tool',
-      'Stop using the tool for all candidates over age 40 to avoid any age discrimination claims',
-      'Replace every output of the tool with a separate human decision in each case',
+      "An independent bias audit within the past year, a published summary, and candidate notice",
+      "Approval of the tool by the city's Commission on Human Rights before its first use",
+      "Evidence that the tool's selection rates are equal across the demographic categories audited",
+      "A human decision replacing the tool's output for candidates who are screened out",
     ],
     correctIndex: 0,
     explanation:
-      'Local Law 144 requires an independent bias audit within the year before use, a public summary of the results, and notice to candidates and employees. It does not require state approval or a ban on the tool.',
+      "The law requires an independent bias audit no more than a year before use, a public summary including impact ratios, and notice to candidates. It does not require agency approval, identical selection rates, or human replacement of outputs.",
   },
   {
     id: 'aigp-law-29',
     domainId: 'aigp-law',
     prompt:
-      "The Colorado AI Act focuses on 'high-risk artificial intelligence systems.' What central duty does it place on developers and deployers of those systems?",
+      "Under the Colorado AI Act, how can a deployer of a high-risk AI system benefit from following a recognized framework such as the NIST AI RMF or ISO/IEC 42001?",
     choices: [
-      'To register every high-risk AI system with the Federal Trade Commission before deployment',
-      'To obtain explicit written consent before any use of AI with consumers',
-      'To use reasonable care to protect consumers from algorithmic discrimination',
-      'To publish their model weights and training data for public inspection',
+      "It exempts the deployer from the law's consumer notice and explanation requirements",
+      "It lets the deployer skip impact assessments, since the framework covers the same ground",
+      "It transfers liability for algorithmic discrimination from the deployer to the developer",
+      "It supports a rebuttable presumption of reasonable care and an affirmative defense",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation:
-      'The Colorado law requires developers and deployers of high-risk systems that make or substantially influence consequential decisions, such as in employment, lending, or housing, to use reasonable care to protect consumers from algorithmic discrimination. It is enforced by the state attorney general.',
+      "The Colorado law provides a rebuttable presumption of reasonable care for deployers who meet its requirements, and an affirmative defense for those who discover and cure violations while complying with a recognized framework such as the NIST AI RMF or ISO/IEC 42001. Frameworks do not remove notice or impact assessment duties or shift liability.",
   },
   {
     id: 'aigp-law-30',
     domainId: 'aigp-law',
     prompt:
-      "The US Federal Trade Commission has required some companies to delete algorithms trained on data that was collected unlawfully. What is this remedy commonly called, and under what authority has the FTC acted?",
+      "The US FTC has ordered companies to delete models and algorithms built with improperly obtained data. What is this remedy commonly called, and what is its legal basis?",
     choices: [
-      'Model licensing, under its authority to enforce the federal Copyright Act',
-      'Algorithmic disgorgement, under its authority over unfair or deceptive practices',
-      'Data localization, under its authority from the federal Privacy Act of 1974 and related rules',
-      'Mandatory open-sourcing, under its antitrust authority from the Sherman Act',
+      "Model licensing, under federal copyright law protecting the affected data",
+      "Algorithmic disgorgement, under its authority over unfair or deceptive practices",
+      "Data localization, under the Privacy Act of 1974 governing personal records",
+      "Mandatory open-sourcing, under the Sherman Act's rules on anticompetitive conduct",
     ],
     correctIndex: 1,
     explanation:
-      'The FTC has used its Section 5 authority over unfair or deceptive practices to require deletion of models and algorithms built on improperly obtained data, a remedy often called algorithmic disgorgement. It has also acted against deceptive claims about AI products.',
+      "The FTC has used Section 5 of the FTC Act to require deletion of algorithms trained on unlawfully obtained data, often called algorithmic disgorgement. In the Rite Aid case it also barred the company from using facial recognition for five years.",
   },
   {
     id: 'aigp-law-31',
     domainId: 'aigp-law',
     prompt:
-      "A US lender uses a complex machine learning model to deny credit. Under the Equal Credit Opportunity Act and Regulation B, what must it provide to rejected applicants?",
+      "A US lender uses a complex model and sends denied applicants a checklist-style notice listing generic reasons such as 'insufficient credit history,' though the model mainly relied on other factors. What is the problem under ECOA and Regulation B?",
     choices: [
-      'A copy of the model\'s source code',
-      'Nothing, because complex models are exempt from explanation requirements',
-      'A general statement that the decision was made by AI',
-      'A statement of the specific principal reasons for the denial',
+      "None, since standard checklist reasons from the sample forms are acceptable in all cases",
+      "Complex machine learning models are exempt from specific adverse action reasons",
+      "The lender should provide the model's source code or feature weights instead",
+      "The reasons must reflect the principal factors the model actually used",
     ],
     correctIndex: 3,
     explanation:
-      'Regulation B requires creditors to give specific principal reasons for adverse action, and using a complex algorithm does not exempt them. Lenders must be able to derive accurate reasons from their models.',
+      "Adverse action notices must state the specific principal reasons for the decision. Using generic reasons that do not reflect what the model actually relied on does not comply, and model complexity is not an exemption. Source code is not required.",
   },
   {
     id: 'aigp-law-32',
     domainId: 'aigp-law',
     prompt:
-      "A company plans to use employees' fingerprints for AI-based timekeeping at its Illinois offices. What makes the Illinois Biometric Information Privacy Act (BIPA) especially significant for this plan?",
+      "What makes the Illinois Biometric Information Privacy Act especially significant for companies using facial recognition or fingerprint systems?",
     choices: [
-      'It requires written consent and gives individuals a private right to sue',
-      'It bans all biometric technology in workplaces located anywhere in the state of Illinois',
-      'It applies only to state and local government agencies in Illinois',
-      'It is enforced only through voluntary industry codes of conduct',
+      "It bans biometric technology in Illinois workplaces unless employees opt in",
+      "It requires written consent and gives individuals a private right of action",
+      "It applies only to state agencies and their contractors that collect biometrics",
+      "It is enforced by the Illinois attorney general, with no individual lawsuits",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      'BIPA requires informed written consent and a published retention policy before collecting biometric identifiers, and it lets individuals sue for statutory damages. That private right of action has led to major litigation and settlements.',
+      "BIPA requires notice, informed written consent, and a public retention policy before collecting biometric identifiers, and lets individuals sue for statutory damages, which has produced large settlements. It regulates rather than bans biometrics and applies to private entities.",
   },
   {
     id: 'aigp-law-33',
     domainId: 'aigp-law',
     prompt:
-      "What distinguishes the Council of Europe's Framework Convention on Artificial Intelligence, opened for signature in 2024?",
+      "Which statement about the Council of Europe's Framework Convention on Artificial Intelligence is accurate?",
     choices: [
-      'It is a voluntary code of conduct that AI companies may choose to sign',
-      'It replaces the EU AI Act for all EU member states',
-      'It is the first legally binding international treaty on AI',
-      'It applies only to military uses of AI',
+      "It is a voluntary code of conduct that AI developers can choose to sign",
+      "It is the first binding international AI treaty, open to non-European states",
+      "It replaces the EU AI Act for EU member states that ratify the convention",
+      "It applies mainly to military and national security uses of AI systems",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'The Framework Convention on AI and Human Rights, Democracy and the Rule of Law is the first legally binding international treaty on AI, open to countries beyond Europe. It sits alongside, rather than replacing, the EU AI Act, and national security activities are largely excluded from its scope.',
+      "The Framework Convention on AI and Human Rights, Democracy and the Rule of Law, opened for signature in 2024, is the first binding international AI treaty and can be joined by non-member states. It complements the EU AI Act, and national security and defense are largely outside its scope.",
   },
   {
     id: 'aigp-law-34',
     domainId: 'aigp-law',
     prompt:
-      "Which statement best describes China's approach to regulating public-facing generative AI services?",
+      "Which description best fits China's approach to regulating AI?",
     choices: [
-      'China has no rules specific to generative AI and relies on general law',
-      'China relies only on voluntary industry standards issued by trade groups',
-      'China bans all public-facing generative AI services built by private companies',
-      'China applies targeted rules, including algorithm filing and AI content labeling',
+      "A single comprehensive AI law modeled closely on the EU AI Act's risk tiers and conformity rules",
+      "Voluntary industry guidelines, with no binding rules specific to AI services",
+      "Targeted rules for specific technologies, such as recommendation algorithms and generative AI",
+      "A ban on public-facing generative AI services offered by private companies",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'China regulates specific AI applications through targeted measures, such as the 2023 Interim Measures for generative AI services and rules on algorithmic recommendation, deep synthesis, and labeling AI-generated content. These include algorithm filing and security assessment obligations for certain services.',
+      "China has regulated AI through a series of targeted measures, including rules on recommendation algorithms, deep synthesis, generative AI services, and labeling of AI-generated content, with obligations such as algorithm filing for certain services. It has no single EU-style law, and generative AI services are permitted under these rules.",
   },
   {
     id: 'aigp-law-35',
     domainId: 'aigp-law',
     prompt:
-      "Singapore's Model AI Governance Framework and its AI Verify testing toolkit are best described as what kind of approach?",
+      "Singapore's Model AI Governance Framework and AI Verify toolkit are best described as what?",
     choices: [
-      'A binding law with criminal penalties for non-compliant AI developers',
-      'A voluntary, practical framework and testing toolkit for responsible AI',
-      'A ban on the use of AI in the financial sector without approval',
-      'A mandatory licensing regime for all AI developers operating in Singapore',
+      "A binding law with criminal penalties for AI developers that fail to comply",
+      "A mandatory licensing regime for AI systems deployed in Singapore",
+      "A voluntary framework and toolkit for demonstrating responsible AI",
+      "A ban on AI in financial services without prior approval from the regulator",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      'Singapore has favored voluntary, practical guidance: the Model AI Governance Framework sets out implementable practices, and AI Verify offers a testing framework and toolkit for organizations to assess their systems. Neither is a binding licensing or penalty regime.',
+      "Singapore has favored voluntary, practical tools: the Model AI Governance Framework sets out implementable practices, and AI Verify offers a testing framework and toolkit. Neither is a licensing or penalty regime.",
   },
   {
     id: 'aigp-law-36',
     domainId: 'aigp-law',
     prompt:
-      "What is the UNESCO Recommendation on the Ethics of Artificial Intelligence, adopted in 2021?",
+      "Which statement about the UNESCO Recommendation on the Ethics of Artificial Intelligence is accurate?",
     choices: [
-      'A global, non-binding standard on AI ethics adopted by UNESCO member states',
-      'A binding treaty enforced by the International Court of Justice against member states',
-      'A technical standard for certifying AI systems',
-      'A US federal regulation on AI in education',
+      "A non-binding global standard adopted by UNESCO member states in 2021",
+      "A binding treaty enforced by the International Court of Justice against states",
+      "A technical standard that certification bodies use to certify AI systems",
+      "A framework that applies to AI used in education, science, and culture only",
     ],
     correctIndex: 0,
     explanation:
-      'The UNESCO Recommendation is a global, non-binding instrument adopted by member states that sets out values, principles, and policy action areas for ethical AI. It is not a treaty, technical standard, or national regulation.',
+      "The UNESCO Recommendation is a global, non-binding instrument setting out values, principles, and policy areas for ethical AI. Despite UNESCO's education mandate, it covers AI broadly, and it is neither a treaty nor a certification standard.",
   },
   {
     id: 'aigp-law-37',
     domainId: 'aigp-law',
     prompt:
-      "Under the revised EU Product Liability Directive adopted in 2024, how is AI software treated?",
+      "The EU revised its Product Liability Directive in 2024. How does it treat AI software?",
     choices: [
-      'Software is excluded from product liability entirely, as it is a service',
-      'Only physical hardware containing AI can be defective under the Directive',
-      'Software, including AI systems, can be a product subject to strict liability for defects',
-      'AI developers are fully immune from liability if they comply with every AI Act requirement',
+      "Software is excluded, so physical products containing AI remain the focus of liability",
+      "AI providers are immune from claims if they comply with the AI Act's requirements",
+      "Open-source AI software is covered, while commercial software falls under contract law",
+      "Software, including AI, is a product, so defects can lead to no-fault liability",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation:
-      'The revised Product Liability Directive explicitly includes software, including AI systems, as a product, so people harmed by defective software can seek compensation without proving fault. Complying with the AI Act does not create immunity.',
+      "The revised directive explicitly treats software, including AI systems, as a product, so people harmed by defects can claim compensation without proving fault. AI Act compliance does not give immunity, and free open-source software developed outside commercial activity is generally excluded rather than singled out.",
   },
   {
     id: 'aigp-law-38',
     domainId: 'aigp-law',
     prompt:
-      "An AI developer trains a general-purpose model on text scraped from EU websites. Under EU copyright law and the AI Act, what must it respect?",
+      "A GPAI provider trains on text scraped from EU websites. Under EU copyright law and the AI Act, what must its copyright policy address?",
     choices: [
-      'Nothing, because all publicly accessible web content is in the public domain',
-      'Only copyright notices displayed in the page footer',
-      'Only content published by EU government bodies',
-      'Rights holders\' reservations (opt-outs) from text and data mining',
+      "Identifying and respecting rights holders' opt-outs from text and data mining",
+      "Obtaining an individual license for each web page included in the training data",
+      "Nothing, since text and data mining for AI training is permitted under research exceptions",
+      "Removing any content that was published before the AI Act entered into force",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation:
-      'The EU Copyright in the Digital Single Market Directive allows text and data mining unless rights holders have expressly reserved their rights, for example in machine-readable form. The AI Act requires GPAI providers to have a policy to identify and respect those reservations.',
+      "The Digital Single Market Directive permits text and data mining unless rights holders expressly reserve their rights, such as through machine-readable opt-outs, and the AI Act requires GPAI providers to identify and respect those reservations. Individual licenses are not required for all content.",
   },
   {
     id: 'aigp-law-39',
     domainId: 'aigp-law',
     prompt:
-      "A medical device maker wants its FDA-cleared AI imaging software to keep improving after authorization without filing a new submission for every update. Which FDA mechanism supports this?",
+      "A maker of FDA-authorized AI imaging software wants to retrain it periodically without a new submission each time. Which FDA mechanism supports this?",
     choices: [
-      'A predetermined change control plan that is authorized in advance',
-      'A general exemption from review for all AI-enabled device updates',
-      'A manufacturer self-certification that each update is safe',
-      'An annual user fee paid in place of any premarket review',
+      "A general exemption from premarket review for AI-enabled device updates",
+      "A predetermined change control plan authorized in advance",
+      "A self-certification filed with the FDA after each model update",
+      "An annual user fee paid in place of premarket review for updates",
     ],
-    correctIndex: 0,
+    correctIndex: 1,
     explanation:
-      'The FDA\'s predetermined change control plan approach lets manufacturers get planned modifications, along with the methods for developing and validating them, authorized in advance. Changes outside the plan still need their own review.',
+      "A predetermined change control plan describes planned modifications and how they will be developed and validated, and is authorized with the device. Changes outside the plan still need their own submission. There is no general exemption or fee-based alternative.",
   },
   {
     id: 'aigp-law-40',
     domainId: 'aigp-law',
     prompt:
-      "A US employer uses a vendor's AI assessment tool that screens out a significantly higher share of Black applicants. The employer argues the vendor is responsible. Which statement is most accurate under US anti-discrimination law?",
+      "A US employer's vendor assessment tool selects Black applicants at a rate well below 80% of the rate for white applicants. The employer says the vendor is responsible. Which statement is most accurate?",
     choices: [
-      'Only the vendor can be liable, because it built the tool',
-      'The employer can be liable for disparate impact from tools it chooses to use',
-      'Anti-discrimination laws do not apply to automated tools',
-      'Liability arises only if the tool explicitly uses race or another protected trait as an input',
+      "Only the vendor can be liable, since it designed and validated the tool",
+      "There is no disparate impact issue unless the tool uses race as an input",
+      "The four-fifths rule establishes unlawful discrimination, ending the analysis",
+      "The employer can be liable for disparate impact from a tool it uses",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'Employers remain responsible for selection procedures they use, including vendor tools, and disparate impact can arise without any protected attribute as an input. The four-fifths rule of thumb from the federal Uniform Guidelines is often used as an initial check for adverse impact.',
+      "Employers remain responsible under Title VII for selection procedures they use, including vendor tools, and disparate impact does not require race as an input. The four-fifths rule from the Uniform Guidelines is a rule of thumb that signals possible adverse impact; it prompts further analysis rather than proving a violation.",
   },
 ]

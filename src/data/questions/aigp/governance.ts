@@ -1,186 +1,306 @@
 import type { Question } from '../../../lib/types'
 
-// Domain 5: Responsible AI Governance & Risk Management (questions 9-40)
+// Domain 5: Responsible AI Governance & Risk Management
 export const governanceQuestions: Question[] = [
+  {
+    id: 'aigp-governance-1',
+    domainId: 'aigp-governance',
+    prompt:
+      "A company appoints its first head of AI governance. Several business units already use AI tools. Which sequence of first steps is most appropriate?",
+    choices: [
+      "Draft detailed technical standards for each model type, then discover which models are in use",
+      "Secure a mandate and define scope and roles, then inventory existing AI and assess risk",
+      "Commission an external audit of each AI system before policies or roles are defined",
+      "Pause AI use across the company until a complete policy framework has been approved",
+    ],
+    correctIndex: 1,
+    explanation:
+      "A program needs a mandate, scope, and clear roles, and then visibility into existing AI through an inventory so risks can be prioritized. Writing detailed standards before knowing what exists, auditing against undefined expectations, or halting all use are poorly sequenced or disproportionate.",
+  },
+  {
+    id: 'aigp-governance-2',
+    domainId: 'aigp-governance',
+    prompt:
+      "A company buys an AI hiring tool and negotiates a contract that places all liability for biased outcomes on the vendor. Why is this, by itself, insufficient third-party risk management?",
+    choices: [
+      "Liability clauses of this kind are generally unenforceable against AI technology vendors",
+      "Indemnities typically cover direct losses, so the company would still absorb regulatory fines and penalties",
+      "The deployer can remain responsible and applicants are still harmed, so it needs its own oversight",
+      "Contracts cannot allocate AI-specific risks until AI liability law has been harmonized",
+    ],
+    correctIndex: 2,
+    explanation:
+      "Employers typically remain accountable for their hiring decisions regardless of contract terms, and indemnity does not prevent harm to applicants. Deployers still need due diligence, testing, and monitoring. Liability clauses can be enforceable and useful; they are just not a substitute for oversight.",
+  },
+  {
+    id: 'aigp-governance-3',
+    domainId: 'aigp-governance',
+    prompt:
+      "A hospital requires a physician to approve every case flagged by a diagnostic AI. Physicians say they are pressured to approve quickly and rarely deviate from the AI. What is the most important fix?",
+    choices: [
+      "Remove the sign-off requirement, since it adds delay without improving outcomes",
+      "Require a second physician to approve each case, so two reviewers check every flag",
+      "Give physicians the time, training, and authority to disagree, and track override rates",
+      "Replace the system with a more accurate model, so that approvals are less risky",
+    ],
+    correctIndex: 2,
+    explanation:
+      "Oversight only works if reviewers have the capacity and real authority to disagree. Monitoring overrides shows whether review is meaningful. Removing oversight or adding another pressured reviewer does not fix the incentive problem, and a better model does not restore independent judgment.",
+  },
+  {
+    id: 'aigp-governance-4',
+    domainId: 'aigp-governance',
+    prompt:
+      "A company discovers that a deployed AI system has produced biased outcomes for customers for months. Legal counsel is engaged. What should happen first?",
+    choices: [
+      "Publish a statement explaining the issue, so customers hear about it from the company first",
+      "Contain the harm by pausing or limiting the system, while preserving evidence",
+      "Retrain the model on corrected data and redeploy it as quickly as possible",
+      "Wait for the root-cause analysis, so that any action is based on complete facts",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Incident response starts by containing ongoing harm and preserving logs and evidence, followed by investigation, remediation, notification where required, and lessons learned. Rushing a retrained model risks new errors, and waiting for full analysis lets harm continue. External communication comes after the facts are clearer.",
+  },
+  {
+    id: 'aigp-governance-5',
+    domainId: 'aigp-governance',
+    prompt:
+      "A team completes a pre-deployment risk assessment, logs several risks, and considers its governance work finished. What is the main misunderstanding?",
+    choices: [
+      "Risk assessments belong after deployment, once real-world outcomes can be measured",
+      "Each logged risk has to be eliminated before launch, or the system cannot proceed",
+      "Assessments are needed for systems built in-house, not for purchased tools",
+      "Identified risks need treatment, owners, and monitoring, not just documentation",
+    ],
+    correctIndex: 3,
+    explanation:
+      "Assessment is the start of risk management: risks need owners, mitigations, acceptance decisions for residual risk, and monitoring over time. Risks rarely can be eliminated completely, assessments matter before launch too, and bought systems also need them.",
+  },
+  {
+    id: 'aigp-governance-6',
+    domainId: 'aigp-governance',
+    prompt:
+      "In a three lines model applied to AI, which assignment is correct?",
+    choices: [
+      "First line: internal audit; second line: developers; third line: compliance",
+      "First line: the board; second line: executive management; third line: product and engineering teams",
+      "First: teams that own AI risk; second: risk and compliance oversight; third: internal audit",
+      "First line: compliance; second line: product owners; third line: external regulators",
+    ],
+    correctIndex: 2,
+    explanation:
+      "The first line owns and manages risk in day-to-day work, the second line sets frameworks and provides oversight and challenge, and internal audit provides independent assurance. The board oversees the whole model rather than serving as a line, and regulators are external to it.",
+  },
+  {
+    id: 'aigp-governance-7',
+    domainId: 'aigp-governance',
+    prompt:
+      "Two companies' AI systems cause similar harm. Company A has a named owner, decision records, and a clear process to remedy harm. Company B has none of these. Which principle does Company A demonstrate?",
+    choices: [
+      "Accountability",
+      "Explainability",
+      "Transparency",
+      "Robustness",
+    ],
+    correctIndex: 0,
+    explanation:
+      "Accountability means clear ownership, traceable decisions, and the ability to answer for and remedy outcomes. Transparency concerns disclosing how and where AI is used, explainability concerns understanding outputs, and robustness concerns reliable performance. Records support transparency, but ownership plus the ability to answer for and remedy outcomes is accountability.",
+  },
+  {
+    id: 'aigp-governance-8',
+    domainId: 'aigp-governance',
+    prompt:
+      "A system assessed a year ago as moderate risk for adult customers is now being used to make decisions about minors. What should happen?",
+    choices: [
+      "No reassessment, since the system itself and its accuracy have not changed",
+      "A new risk assessment before extending use to the new population",
+      "A note in the annual governance report describing the expanded use",
+      "Confirmation from the original vendor that the system supports the new use",
+    ],
+    correctIndex: 1,
+    explanation:
+      "Risk depends on context and affected population; minors are more vulnerable, and new legal obligations may apply. A material change in use triggers reassessment before expansion. An unchanged system can carry very different risk in a new context.",
+  },
   {
     id: 'aigp-governance-9',
     domainId: 'aigp-governance',
     prompt:
-      "A newly appointed head of AI governance cannot say how many AI systems the company uses, who owns them, or what they do. What should be established first to fix this?",
+      "When building an AI inventory, which set of fields is most useful for governance?",
     choices: [
-      'A public statement of AI principles endorsed by the CEO',
-      'An AI system inventory with owners, purposes, and risk levels',
-      'A company-wide ban on all AI tools until a formal policy has been written',
-      'A plan to build and train an in-house foundation model',
+      "Model name, parameter count, architecture, and programming language",
+      "Owner, purpose, data used, vendor, affected people, and risk tier",
+      "Launch date, product name, number of users, and business sponsor",
+      "Hosting provider, server region, uptime, and incident ticket history",
     ],
     correctIndex: 1,
     explanation:
-      'An organization cannot govern AI it does not know about. An inventory recording each system\'s owner, purpose, data, vendor, and risk tier is the foundation for risk assessment, monitoring, and regulatory compliance.',
+      "Governance needs to know who is accountable, what each system does, what data it uses, who it affects, and how risky it is; these fields drive assessment, monitoring, and regulatory compliance. Technical specs, marketing details, and hosting metrics are secondary.",
   },
   {
     id: 'aigp-governance-10',
     domainId: 'aigp-governance',
     prompt:
-      "A company's AI governance documents include a board-approved statement that 'AI must be used fairly and transparently,' a set of specific testing thresholds, and step-by-step instructions for running a bias test. How are these three layers best described?",
+      "A company has a board-approved commitment to fair AI, specific testing thresholds, and step-by-step instructions for running bias tests. How are these three documents best labeled, in that order?",
     choices: [
-      'Procedures, standards, and policy, listed in that order',
-      'Standards, policy, and procedures, in that order',
-      'Policy, standards, and procedures, in that order',
-      'Three versions of the same policy',
+      "Procedure, standard, policy",
+      "Standard, policy, procedure",
+      "Policy, procedure, standard",
+      "Policy, standard, procedure",
     ],
-    correctIndex: 2,
+    correctIndex: 3,
     explanation:
-      'A policy states high-level commitments, standards set specific measurable requirements, and procedures give step-by-step instructions for meeting them. This layering keeps principles stable while letting operational detail change.',
+      "A policy states high-level commitments, a standard sets specific measurable requirements, and a procedure gives step-by-step instructions. This layering keeps principles stable while operational detail evolves.",
   },
   {
     id: 'aigp-governance-11',
     domainId: 'aigp-governance',
     prompt:
-      "A company is forming an AI governance committee. Which membership is most appropriate?",
+      "A company is forming an AI governance committee to approve high-risk use cases. Which composition is most appropriate?",
     choices: [
-      'Data scientists only, since they understand how the models are built and tested',
-      'Only the legal department, since AI governance is fundamentally a compliance matter',
-      'Only external consultants, to ensure the committee is fully independent of management',
-      'Cross-functional leads from legal, privacy, security, risk, technology, and the business',
+      "Senior data scientists, since they understand model behavior and failure modes best",
+      "The legal department alone, since approving high-risk uses is a compliance decision",
+      "Cross-functional leads from legal, privacy, security, risk, tech, and the business",
+      "External advisors only, so decisions are fully independent of management pressure",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'AI risks cut across technical, legal, ethical, and business areas, so effective committees bring those perspectives together with clear decision rights. A single-discipline group will miss important risks.',
+      "AI risks span technical, legal, ethical, and business concerns, so effective committees combine those perspectives and have defined authority. Single-function or purely external groups miss important risks or lack accountability within the organization.",
   },
   {
     id: 'aigp-governance-12',
     domainId: 'aigp-governance',
     prompt:
-      "The board of a hospital network formally states that it will not use AI to make final clinical decisions without physician review, but will accept moderate risk in administrative automation. What has the board defined?",
+      "A hospital board states that AI may not make final clinical decisions without physician review, but moderate risk is acceptable in administrative automation. What has the board set?",
     choices: [
-      'Its AI risk appetite',
-      'Its model architecture standards',
-      'Its data retention schedule',
-      'Its incident response plan',
+      "Its AI risk appetite",
+      "Its incident response plan",
+      "Its model validation standard",
+      "Its data retention policy",
     ],
     correctIndex: 0,
     explanation:
-      'Risk appetite describes how much and what kinds of risk an organization is willing to accept in pursuit of its goals. It guides which AI uses are pursued and how strictly they are controlled.',
+      "Risk appetite defines how much and what kind of risk the organization will accept in pursuit of its goals, guiding which AI uses are pursued and how tightly they are controlled.",
   },
   {
     id: 'aigp-governance-13',
     domainId: 'aigp-governance',
     prompt:
-      "An AI incident shows that nobody knew whether the product team, the data science team, or compliance was supposed to approve model changes. Which tool most directly prevents this confusion?",
+      "After an incident, nobody could say whether product, data science, or compliance was supposed to approve model changes. Which tool most directly prevents this?",
     choices: [
-      'A larger model monitoring dashboard with more real-time performance charts for executives',
-      'A RACI matrix defining who is responsible, accountable, consulted, and informed',
-      'A new AI ethics principles statement approved by the board of directors',
-      'An annual AI awareness survey sent to all product and data science staff',
+      "A shared model monitoring dashboard with alerts visible to each team",
+      "A statement of AI ethics principles endorsed by the executive leadership team",
+      "A matrix assigning who is responsible, accountable, consulted, and informed",
+      "An annual survey measuring AI awareness and attitudes across the organization",
     ],
-    correctIndex: 1,
+    correctIndex: 2,
     explanation:
-      'A RACI matrix assigns clear roles for each governance activity, including who approves changes. Principles statements and dashboards do not assign decision rights.',
+      "A RACI matrix assigns decision rights and roles for each governance activity, including approvals. Dashboards, principles, and surveys do not assign responsibility.",
   },
   {
     id: 'aigp-governance-14',
     domainId: 'aigp-governance',
     prompt:
-      "Business units start AI projects without telling anyone, and governance learns about them only after launch. Which process fixes this at the source?",
+      "Business units launch AI projects without informing governance, which learns about them only after launch. Which control fixes this at the source?",
     choices: [
-      'Annual internal audits of all business units to find unreported AI projects',
-      'Banning all AI projects unless the CEO reviews and approves each one personally',
-      'A required intake and triage process that screens and risk-tiers new AI use cases',
-      'Hiring more data scientists into each business unit to build AI projects faster',
+      "Annual internal audits of each business unit to find undisclosed AI projects",
+      "A required intake process that screens and risk-tiers new AI use cases early",
+      "A rule that AI projects need the CEO's personal approval before they start",
+      "A temporary freeze on new AI projects until the governance team has capacity",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'An intake process gives governance visibility at the start, sorts use cases by risk, and routes higher-risk ones to deeper review. Annual audits find problems too late, and routing everything to the CEO does not scale.',
+      "An intake and triage process gives governance early visibility and routes higher-risk use cases to deeper review. Annual audits find problems too late, CEO approval does not scale, and bans are disproportionate.",
   },
   {
     id: 'aigp-governance-15',
     domainId: 'aigp-governance',
     prompt:
-      "A survey finds many employees paste client documents into free public chatbots using personal accounts. What is the best governance response?",
+      "A survey shows employees paste client documents into free public chatbots using personal accounts. What is the most effective response?",
     choices: [
-      'Ignore it, since the tools improve productivity and employees are using them anyway',
-      'Discipline every employee who has used a public chatbot for any work task',
-      'Block all internet access on work devices so no chatbot can be reached',
-      'Provide approved tools with proper data protections, plus clear acceptable use rules',
+      "Provide approved tools with enterprise protections, plus clear rules and training",
+      "Block every public AI website on the corporate network and on company devices",
+      "Discipline employees who used public chatbots, to deter future violations",
+      "Accept the practice, since the productivity gains outweigh the data risk",
     ],
-    correctIndex: 3,
+    correctIndex: 0,
     explanation:
-      '"Shadow AI" usually reflects real demand. Offering sanctioned tools with enterprise data protections, together with clear rules and training, reduces data leakage more effectively than blanket bans or ignoring the problem.',
+      "Shadow AI usually reflects real demand. Sanctioned tools with proper data protection, backed by clear rules and training, reduce leakage more effectively than bans, which drive use onto personal devices, or tolerating uncontrolled data sharing.",
   },
   {
     id: 'aigp-governance-16',
     domainId: 'aigp-governance',
     prompt:
-      "Which provision is most important to include in an employee acceptable use policy for generative AI tools?",
+      "Which provision is most important in an employee acceptable use policy for generative AI?",
     choices: [
-      'Rules on what data may be entered, and a duty to check outputs before relying on them',
-      'A requirement that all AI outputs be posted publicly for transparency purposes',
-      'A ban on using any AI tools outside of normal business hours and office locations',
-      'A requirement to always use the most expensive and advanced AI tool available',
+      "A list of approved vendors, with each vendor's own usage guidelines attached",
+      "A requirement to label each AI-assisted document with the tool and version used",
+      "A ban on AI use in customer-facing work, regardless of the task or the data involved",
+      "Rules on what data may be entered and a duty to check outputs before relying on them",
     ],
-    correctIndex: 0,
+    correctIndex: 3,
     explanation:
-      'Acceptable use policies should say what data can and cannot be entered, such as confidential or personal data, and require people to review AI outputs for accuracy before using them. The other options do not address the real risks.',
+      "Acceptable use policies should address which data can be entered, such as confidential or personal data, and require people to verify outputs before use. The other options do not address the main risks.",
   },
   {
     id: 'aigp-governance-17',
     domainId: 'aigp-governance',
     prompt:
-      "A procurement team is evaluating an AI vendor for a high-risk use case. Which question is most important to include in the due diligence?",
+      "A procurement team is assessing an AI vendor for a high-risk use. Which due diligence question is most important?",
     choices: [
-      'How many employees does the vendor have, and how fast is it growing?',
-      'How was the model tested for accuracy and bias, and what documentation can you share?',
-      'Which cloud provider hosts the vendor corporate website, blog, and other marketing pages?',
-      'Does the vendor sponsor major industry conferences and publish white papers?',
+      "What is the vendor's size, growth rate, and number of enterprise customers?",
+      "How was the model tested for accuracy and bias, and what can you share?",
+      "Which industry awards and analyst rankings has the vendor received?",
+      "What uptime and support response times does the vendor guarantee?",
     ],
     correctIndex: 1,
     explanation:
-      'Due diligence for AI vendors should cover testing methods, bias and performance results, documentation such as model cards, data handling, security, and incident history. Company size and marketing activity say little about the system\'s risks.',
+      "Due diligence should examine testing methods, bias and performance results, documentation such as model cards, data handling, security, and incident history. Size and awards say little about the system's risks.",
   },
   {
     id: 'aigp-governance-18',
     domainId: 'aigp-governance',
     prompt:
-      "A company is negotiating a contract for a third-party AI service that will process customer data. Which clause is most important from an AI governance perspective?",
+      "A company is negotiating a contract for a third-party AI service that processes customer data. Which clause is most important from an AI governance perspective?",
     choices: [
-      'A clause setting the format and logo placement on the vendor monthly invoices',
-      'A clause requiring the vendor to write its software in a specific programming language',
-      'Limits on the vendor using company data to train its models, plus audit and notice rights',
-      'A clause preventing the company from ever switching to a different AI vendor',
+      "Limits on training with company data, plus audit, change-notice, and incident rights",
+      "A fixed price and uptime guarantee for the full term of the agreement",
+      "Exclusive access to the vendor's newest model for the length of the contract",
+      "Broad indemnity for AI-related losses, which reduces the need for further vendor oversight",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      'Key AI contract terms include restrictions on using customer data for vendor training, rights to audit or receive assurance reports, notice of material model changes, incident notification, and data deletion. Lock-in clauses and cosmetic terms do not manage AI risk.',
+      "Key AI contract terms restrict vendor reuse of customer data, give audit or assurance rights, require notice of material model changes, and set incident notification duties. Pricing, exclusivity, and branding do not manage AI risk.",
   },
   {
     id: 'aigp-governance-19',
     domainId: 'aigp-governance',
     prompt:
-      "A company rolls out the same one-hour AI awareness video to every employee, from software engineers to the board. What improvement would make its AI literacy program more effective?",
+      "A company rolls out the same one-hour AI awareness video to everyone from engineers to the board. What change would most improve its AI literacy program?",
     choices: [
-      'Removing training entirely so employees can spend the time on their work',
-      'Making the same video longer so it covers every topic in more depth',
-      'Training only the data science team, since they build the AI systems',
-      'Tailoring training to each role\'s responsibilities and the AI they use',
+      "Make the video longer and more detailed so it covers each topic in depth",
+      "Train only the data science team, since they build and maintain the AI systems",
+      "Replace the video with a written AI policy that employees sign each year",
+      "Tailor training to each role's responsibilities and the AI tools they use",
     ],
     correctIndex: 3,
     explanation:
-      'Effective AI literacy is role-based: developers need technical risk training, reviewers need oversight skills, and executives need to understand governance and accountability. The EU AI Act\'s literacy obligation also points to context-appropriate training.',
+      "Effective AI literacy is role-based: developers need technical risk training, reviewers need oversight skills, and executives need to understand accountability and governance. The EU AI Act's literacy duty also points to training appropriate to context and role.",
   },
   {
     id: 'aigp-governance-20',
     domainId: 'aigp-governance',
     prompt:
-      "A board asks how it can tell whether the AI governance program is working. Which metric is most meaningful?",
+      "A board asks how it will know whether the AI governance program is working. Which metric is most meaningful?",
     choices: [
-      'Share of high-risk systems with current assessments, and time taken to resolve AI incidents',
-      'Number of AI-related press releases issued and positive media mentions received each year',
-      'Total number of AI tools purchased and the amount spent on AI licenses each year',
-      'Number of pages in the AI policy and how many times it has been revised this year',
+      "Number of AI tools and licenses purchased across the company and its subsidiaries this year",
+      "Number of AI policies and standards approved and published this year",
+      "Share of high-risk systems with current assessments, and AI incident resolution time",
+      "Number of employees who have completed the general AI awareness video",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation:
-      'Useful governance metrics measure coverage and effectiveness, such as assessment completion for high-risk systems, monitoring coverage, and incident response times. Counting documents, tools, or press releases does not show whether risk is being managed.',
+      "Useful metrics show coverage and effectiveness, such as assessment completion for high-risk systems, monitoring coverage, and incident resolution. Counting tools, pages, or press releases does not show whether risk is managed.",
   },
   {
     id: 'aigp-governance-21',
@@ -188,298 +308,298 @@ export const governanceQuestions: Question[] = [
     prompt:
       "What is the board of directors' most appropriate role in AI governance?",
     choices: [
-      'Approving every individual model personally before it is deployed',
-      'Overseeing AI strategy and risk, and holding management accountable',
-      'Writing the technical testing procedures that data scientists follow',
-      'Having no role, since AI is an operational matter for management alone',
+      "Approving each AI model personally before it is deployed to customers",
+      "Overseeing AI strategy and risk and holding management accountable",
+      "Writing the technical testing and validation procedures for AI systems",
+      "Leaving AI to management entirely, since it is an operational matter",
     ],
     correctIndex: 1,
     explanation:
-      'Boards provide oversight: they set the tone, approve risk appetite and major policies, receive regular risk reporting, and hold management accountable. Approving individual models or writing procedures is management\'s job.',
+      "Boards set tone, approve risk appetite and major policies, receive risk reporting, and hold management accountable. Approving individual models and writing procedures are management responsibilities.",
   },
   {
     id: 'aigp-governance-22',
     domainId: 'aigp-governance',
     prompt:
-      "In a three lines of defense model, what does internal audit add to AI governance that the first and second lines do not?",
+      "What does internal audit contribute to AI governance that the first and second lines do not?",
     choices: [
-      'It builds and deploys the AI systems that the business units request, fund, and use',
-      'It writes the AI risk policies and standards that the first line must follow',
-      'It gives independent assurance that governance and controls work as intended',
-      'It handles customer complaints about AI decisions and responds to each one',
+      "Building and deploying AI systems that the business units request",
+      "Writing the AI risk policies and standards that the first line follows",
+      "Independent assurance that controls work, reported to the board",
+      "Monitoring each model's performance daily and escalating any drift",
     ],
     correctIndex: 2,
     explanation:
-      'Internal audit, the third line, independently assesses whether the first line\'s controls and the second line\'s oversight are designed and operating effectively, and reports to the board or audit committee. It does not build systems or write the policies it audits.',
+      "Internal audit independently evaluates whether first-line controls and second-line oversight are designed and operating effectively and reports to the board or audit committee. It does not build systems or write the policies it audits.",
   },
   {
     id: 'aigp-governance-23',
     domainId: 'aigp-governance',
     prompt:
-      "A risk assessment finds that a proposed AI tool for fully automated firing decisions carries unacceptable risk that no control could reduce enough. Which risk treatment is most appropriate?",
+      "A risk assessment finds that fully automated termination decisions carry unacceptable risk that no control can reduce enough. Which risk treatment fits?",
     choices: [
-      'Transfer the risk by buying an insurance policy',
-      'Accept the risk and proceed',
-      'Mitigate the risk with a disclaimer',
-      'Avoid the risk by not pursuing that use',
+      "Transfer, by buying insurance that covers claims from wrongful terminations",
+      "Avoid, by not pursuing that use or fundamentally redesigning it",
+      "Accept, with a documented sign-off from the head of human resources",
+      "Mitigate, by adding an explanation of the AI's role to termination letters",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      'When risk cannot be reduced to an acceptable level, avoidance, meaning not doing the activity or redesigning it fundamentally, is the right treatment. Insurance does not prevent the harm, and a disclaimer is not a real mitigation.',
+      "When risk cannot be brought within appetite, avoidance is appropriate. Insurance does not prevent harm to employees, accepting an unacceptable risk contradicts the finding, and a disclaimer is not a real mitigation.",
   },
   {
     id: 'aigp-governance-24',
     domainId: 'aigp-governance',
     prompt:
-      "After mitigations, some residual risk remains in a new customer-facing AI system. Who should formally accept that residual risk?",
+      "After mitigation, residual risk remains in a new customer-facing AI system. Who should formally accept it?",
     choices: [
-      'An accountable executive with the authority set out in the risk policy',
-      'The most junior developer on the project, who knows the code best',
-      'The AI vendor, acting on behalf of the company that deploys the system',
-      'No one, since residual risk after mitigation does not need formal acceptance',
+      "An accountable executive with authority set out in the risk policy",
+      "The lead developer, who best understands the system's technical limitations",
+      "The AI vendor, which can accept residual risk on the deployer's behalf",
+      "The compliance team, which reviews every AI system before it launches",
     ],
     correctIndex: 0,
     explanation:
-      'Residual risk should be formally accepted by someone with the authority to do so under the organization\'s risk framework, typically a senior accountable owner, and the decision should be documented. Vendors cannot accept risk on the deployer\'s behalf.',
+      "Residual risk should be accepted by someone authorized under the risk framework, usually a senior accountable owner, and the decision documented. Developers lack that authority, and vendors cannot accept risk on the deployer's behalf.",
   },
   {
     id: 'aigp-governance-25',
     domainId: 'aigp-governance',
     prompt:
-      "A company already has mature privacy, security, and model risk management programs. What is the most efficient way to build AI governance?",
+      "A company already has mature privacy, security, and model risk programs. What is the most efficient way to establish AI governance?",
     choices: [
-      'Create a completely separate AI program with its own policies, committees, and tools',
-      'Integrate AI risks into existing programs and fill the gaps they don\'t cover',
-      'Rely entirely on the privacy program',
-      'Wait until an AI-specific law requires a program',
+      "Build a separate AI program with its own policies, committees, and tooling",
+      "Extend the privacy program to cover AI, since most AI risks involve personal data",
+      "Wait for AI-specific regulation in the company's main markets before acting",
+      "Integrate AI risks into existing programs and add AI-specific elements",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'AI governance works best built on existing structures such as privacy impact assessments, security reviews, and model validation, while adding AI-specific elements like fairness testing and GenAI controls. A fully separate program duplicates effort, and relying on privacy alone leaves gaps.',
+      "Building on existing structures such as impact assessments, security reviews, and model validation, while adding AI-specific controls like fairness testing and GenAI safeguards, avoids duplication. Privacy alone leaves gaps, and waiting leaves risks unmanaged.",
   },
   {
     id: 'aigp-governance-26',
     domainId: 'aigp-governance',
     prompt:
-      "A company hires an outside firm to audit its AI hiring tool for bias. The same firm also built and sells the tool. What is the main problem?",
+      "A company hires a firm to audit its AI hiring tool for bias. The same firm built and sells the tool. What is the main problem?",
     choices: [
-      'External audits are not allowed for AI tools used in hiring decisions',
-      'The audit will take too long because the firm knows the tool too well',
-      'The auditor lacks independence, which undermines the audit\'s credibility',
-      'The firm will charge too much because it faces no competition for the audit work',
+      "Audits of hiring tools may be performed only by government-accredited firms",
+      "The firm lacks independence, which undermines the audit's credibility",
+      "The firm cannot access the tool's training data without the vendor's consent",
+      "The audit should be done internally, since external audits expose trade secrets",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'Assurance is only credible if the auditor is independent of the system it evaluates. Some laws, such as New York City\'s Local Law 144, require bias audits by independent auditors for this reason.',
+      "Assurance is only credible if the auditor is independent of what it evaluates. New York City's Local Law 144, for example, requires bias audits by independent auditors.",
   },
   {
     id: 'aigp-governance-27',
     domainId: 'aigp-governance',
     prompt:
-      "An engineer believes a deployed model is harming customers but fears retaliation for raising it with their manager, who championed the project. What governance mechanism helps here?",
+      "An engineer believes a deployed model is harming customers but fears retaliation from the manager who championed it. Which mechanism helps most?",
     choices: [
-      'A requirement that all concerns be raised openly in scheduled team meetings',
-      'A policy that only managers may report AI issues directly to the governance committee',
-      'Removing the engineer from the project to avoid conflict with the manager',
-      'A confidential escalation or speak-up channel with anti-retaliation protection',
+      "An open-door policy that encourages staff to raise concerns with their managers",
+      "A rule that AI issues be reported through the project's regular status meetings",
+      "A confidential escalation channel with protection against retaliation",
+      "Rotating the engineer to another project to reduce friction with the manager",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'Confidential reporting channels with protection from retaliation let people raise concerns that might otherwise be suppressed. Frontier AI safety commitments and some laws, such as the EU Whistleblower Directive, emphasize such protections.',
+      "Confidential speak-up channels with anti-retaliation protection let people raise concerns that would otherwise be suppressed. Laws such as the EU Whistleblower Directive and many frontier AI safety commitments emphasize such protections.",
   },
   {
     id: 'aigp-governance-28',
     domainId: 'aigp-governance',
     prompt:
-      "Two years after deployment, a regulator asks a company to show the risk assessment, approvals, and test results for an AI system. Which practice makes this possible?",
+      "Two years after launch, a regulator asks for the risk assessment, approvals, and test results for an AI system. Which practice makes this possible?",
     choices: [
-      'Keeping governance records under a defined retention schedule',
-      'Deleting all project records after launch',
-      'Storing records only in employees\' personal email accounts and laptops',
-      'Recreating the documents when a regulator asks',
+      "Keeping governance records in a controlled repository under a retention schedule",
+      "Recreating the documents from team members' recollections when a regulator asks",
+      "Storing records in project members' email so each decision stays with its author",
+      "Deleting project records after launch, to limit data that could be subpoenaed",
     ],
     correctIndex: 0,
     explanation:
-      'Accountability depends on being able to show what was decided, by whom, and on what evidence. Governance records should be kept in a controlled repository under a retention schedule. Recreating them after the fact is not credible.',
+      "Accountability depends on being able to show what was decided, by whom, and on what evidence. Records recreated after the fact are not credible, and scattered or deleted records cannot support a response.",
   },
   {
     id: 'aigp-governance-29',
     domainId: 'aigp-governance',
     prompt:
-      "A company's AI ethics board reviews high-profile projects, but product teams are free to ignore its recommendations and often do. What is the core weakness?",
+      "An AI ethics board reviews high-profile projects, but product teams often ignore its recommendations without consequence. What is the core weakness?",
     choices: [
-      'The board meets too often, which slows down product teams unnecessarily',
-      'The board lacks authority, and its decisions are not integrated into approval processes',
-      'The board has too many members from different disciplines to reach agreement on anything',
-      'The board reviews too few low-risk projects to understand everyday AI use',
+      "The board meets too rarely to review projects before they are launched",
+      "The board's members come from too many disciplines to agree on decisions",
+      "The board reviews too few projects to see patterns across the company",
+      "The board lacks authority, and its decisions are not built into approvals",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'Advisory bodies without decision rights, escalation paths, or a place in approval workflows tend to be sidelined. Governance bodies need clear mandates and authority to be effective.',
+      "Advisory bodies without decision rights, escalation paths, or a place in approval workflows are easily sidelined. Governance bodies need clear mandates and authority.",
   },
   {
     id: 'aigp-governance-30',
     domainId: 'aigp-governance',
     prompt:
-      "AI laws and guidance are changing quickly across the jurisdictions where a company operates. Which practice best keeps its governance program current?",
+      "AI laws and guidance are changing quickly in the jurisdictions where a company operates. Which practice best keeps its governance program current?",
     choices: [
-      'Reviewing regulations only after receiving an enforcement notice',
-      'Following only the laws of the single country where the company has its global headquarters',
-      'Structured regulatory horizon scanning with owners and a process to update policies',
-      'Freezing all AI projects until the laws in every jurisdiction settle down',
+      "Reviewing regulations when the legal team is notified of an enforcement action",
+      "Following the laws of the headquarters country, which usually set the strictest bar",
+      "Structured horizon scanning with owners and a process to update policies",
+      "Pausing new AI projects until the regulatory landscape has settled down",
     ],
     correctIndex: 2,
     explanation:
-      'Horizon scanning systematically tracks emerging laws, guidance, and standards, assesses their impact, and feeds changes into policies and controls. Reacting only to enforcement or ignoring other jurisdictions leaves the program exposed.',
+      "Horizon scanning tracks emerging laws, guidance, and standards, assesses their impact, and feeds changes into policies and controls. Reacting only to enforcement or ignoring other jurisdictions leaves the company exposed.",
   },
   {
     id: 'aigp-governance-31',
     domainId: 'aigp-governance',
     prompt:
-      "A model approved for recommending products is later repurposed by another team to set customers' credit limits. What should happen before that reuse?",
+      "A model approved for recommending products is repurposed by another team to set customers' credit limits. What should happen first?",
     choices: [
-      'Nothing, since the model was already approved',
-      'Only a check that the model still runs correctly on the new data',
-      'Approval from the original development team only',
-      'A new risk assessment for the new, higher-stakes use',
+      "No new review, since the model was already approved and is technically unchanged",
+      "A technical check that the model performs well on the new credit data",
+      "A new risk assessment and approval for the new, higher-stakes use",
+      "Sign-off from the team that built the model, since it knows its limits",
     ],
-    correctIndex: 3,
+    correctIndex: 2,
     explanation:
-      'Risk depends on use, so a new purpose, especially a consequential one like credit decisions, requires a fresh assessment and approval. The original approval covered a different context, and credit may bring new legal obligations.',
+      "Risk depends on use, and credit decisions carry legal obligations and serious consequences. The original approval covered a different context. A technical check or the builders' sign-off does not assess the new risks.",
   },
   {
     id: 'aigp-governance-32',
     domainId: 'aigp-governance',
     prompt:
-      "Under the EU AI Act, what must a provider do when it becomes aware of a serious incident involving its high-risk AI system?",
+      "Under the EU AI Act, what must a provider do on learning of a serious incident involving its high-risk system?",
     choices: [
-      'Report it to the market surveillance authorities within set deadlines',
-      'Wait for its next annual compliance report to mention the incident',
-      'Notify only its own board of directors and keep the matter internal',
-      'Report it only if an affected customer files a lawsuit over the resulting harm',
+      "Report it to the relevant market surveillance authorities within set deadlines",
+      "Describe it in the next annual compliance report submitted to the AI Office",
+      "Escalate it to the board and document the company's internal response",
+      "Report it only if an affected person files a complaint or legal claim",
     ],
     correctIndex: 0,
     explanation:
-      'Providers of high-risk systems must report serious incidents to the market surveillance authorities of the member states where they occurred, within deadlines set in the Act. Internal escalation alone is not enough.',
+      "Providers must report serious incidents to the market surveillance authorities of the member states where they occurred, within deadlines set by the Act. Internal escalation alone does not meet the obligation.",
   },
   {
     id: 'aigp-governance-33',
     domainId: 'aigp-governance',
     prompt:
-      "A company wants to build public trust in how it uses AI. Which action is most credible?",
+      "A company wants to build public trust in its use of AI. Which action is most credible?",
     choices: [
-      'Stating in its advertising that its AI systems are completely unbiased and error-free',
-      'Publishing where it uses AI, how it is governed, and how people can raise concerns',
-      'Refusing to answer questions about its AI use in order to protect trade secrets',
-      'Publishing all of its model source code online without any explanation or context',
+      "Stating in advertising that its AI has been independently certified as unbiased",
+      "Declining to comment on AI use, to avoid statements that could create liability",
+      "Publishing its model source code so anyone can inspect how decisions are made",
+      "Publishing where it uses AI, how it is governed, and how to raise concerns",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'Meaningful transparency explains where AI is used, what safeguards exist, and how people can seek recourse. Absolute claims such as "completely unbiased" are misleading and can themselves draw regulatory action.',
+      "Meaningful transparency explains where AI is used, what safeguards exist, and how people can seek recourse. Absolute claims like 'completely unbiased' are misleading and can draw regulatory action, and unexplained code is not meaningful to most people.",
   },
   {
     id: 'aigp-governance-34',
     domainId: 'aigp-governance',
     prompt:
-      "A development team wants to use an open-source model downloaded from a public repository in a commercial product. Which governance check is essential?",
+      "A team wants to use an open-source model from a public repository in a commercial product. Which check is essential?",
     choices: [
-      'Confirming the model has many downloads and positive reviews from users',
-      'Checking that the repository has a professional logo and a detailed README',
-      'Reviewing the license terms, the model\'s provenance, and known limitations',
-      'Verifying the model was released in the last month, so it is the newest option',
+      "That the model is widely downloaded and well rated by the developer community",
+      "The license terms, the model's provenance, and its known limitations",
+      "That the repository includes clear setup instructions and example code",
+      "That the model is the most recent release from a well-known AI lab",
     ],
-    correctIndex: 2,
+    correctIndex: 1,
     explanation:
-      'Open-source models come with licenses that may restrict commercial or certain uses, and their provenance, training data, and safety testing vary widely. Popularity and recency do not establish that a model is fit for purpose or legally usable.',
+      "Open-source licenses may restrict commercial or certain uses, and provenance, training data, and safety testing vary widely. Popularity, documentation quality, and recency do not show the model is legally usable or fit for purpose.",
   },
   {
     id: 'aigp-governance-35',
     domainId: 'aigp-governance',
     prompt:
-      "A company assigns human reviewers to oversee a high-risk AI system. Which combination makes that oversight effective?",
+      "Under the EU AI Act, deployers of high-risk systems must assign human oversight. Which description best matches the requirement?",
     choices: [
-      'Reviewers with no special training and very high daily case quotas',
-      'Reviewers who may view every output but have no power to change or stop them',
-      'Reviewers drawn at random from any department each week for fairness',
-      'Reviewers with the competence, authority, and time to override the system',
+      "Oversight rotated weekly among available staff, so no one person becomes complacent",
+      "Oversight by people with the needed competence, training, authority, and support",
+      "Oversight by the provider's staff, who understand the system best, on the deployer's behalf",
+      "Oversight triggered when a user complains, so reviewers focus on contested decisions",
     ],
-    correctIndex: 3,
+    correctIndex: 1,
     explanation:
-      'Effective oversight requires people who understand the system\'s capabilities and limits, have the authority to intervene, and have enough time to do so. The EU AI Act requires deployers to assign oversight to people with the necessary competence, training, and authority.',
+      "Article 26 requires deployers to assign human oversight to natural persons who have the necessary competence, training, and authority, as well as the necessary support. Oversight is the deployer's duty and must be continuous, not complaint-driven.",
   },
   {
     id: 'aigp-governance-36',
     domainId: 'aigp-governance',
     prompt:
-      "A governance team applies the same lengthy review to an internal meeting-notes summarizer as to an AI system that approves mortgages. What principle is being overlooked?",
+      "A governance team applies the same lengthy review to an internal meeting-notes summarizer as to a system that approves mortgages. What principle is being overlooked?",
     choices: [
-      'Proportionality: governance effort should match the level of risk',
-      'Transparency: all AI systems must be publicly disclosed in the same level of detail',
-      'Accountability: every system needs an owner',
-      'Explainability: all models must be interpretable',
+      "Proportionality: governance effort should scale with each system's potential impact",
+      "Transparency: AI systems should each be disclosed publicly in the same level of detail",
+      "Accountability: each AI system needs a named owner before it can be used",
+      "Explainability: each model should be interpretable before it can be approved",
     ],
     correctIndex: 0,
     explanation:
-      'Risk-based governance scales scrutiny to potential impact, so low-risk tools get a light review and high-risk systems get the full one. Uniform heavy review wastes resources and can push teams toward unapproved workarounds.',
+      "Risk-based governance scales scrutiny to potential impact. Uniform heavy review wastes resources and can push teams toward unapproved workarounds, while under-reviewing high-risk systems. The other principles apply but are not what is missing here.",
   },
   {
     id: 'aigp-governance-37',
     domainId: 'aigp-governance',
     prompt:
-      "A company ends its contract with an AI vendor that processed customer data for three years. What governance step is most important at exit?",
+      "A company ends a three-year contract with an AI vendor that processed customer data and fine-tuned models on it. What is the most important exit step?",
     choices: [
-      'Signing a new contract with the same vendor to keep the relationship open for the future',
-      'Confirmation that company data and derived artifacts are returned or deleted',
-      'Keeping the vendor\'s access credentials active in case they are needed',
-      'Publishing a press release announcing the change of AI vendor',
+      "Renewing with the same vendor on shorter terms, to keep the relationship open",
+      "Keeping the vendor's system access active for a transition period, in case the data is needed",
+      "Announcing the change of vendor to customers who interacted with the system",
+      "Confirmation that company data and derived artifacts, like fine-tuned models, are deleted",
     ],
-    correctIndex: 1,
+    correctIndex: 3,
     explanation:
-      'Vendor offboarding should confirm return or deletion of data, including artifacts such as fine-tuned models where relevant, and revoke access. Leaving credentials active creates security risk.',
+      "Offboarding should confirm return or deletion of data and derived artifacts such as fine-tuned models that may encode customer data, and revoke access. Leaving access active creates security risk.",
   },
   {
     id: 'aigp-governance-38',
     domainId: 'aigp-governance',
     prompt:
-      "Customer complaints show that an AI claims-handling system often misreads handwritten forms, but the model team never sees the complaint data. What governance improvement is needed?",
+      "Customer complaints show an AI claims system often misreads handwritten forms, but the model team never sees complaint data. What is the most important governance improvement?",
     choices: [
-      'Stop accepting handwritten forms without notice',
-      'Reduce the number of complaint channels',
-      'Route complaint data to the model owners and monitoring processes',
-      'Retrain the model every day regardless of what the complaints actually say',
+      "Route complaint data to model owners and connect it to monitoring and incidents",
+      "Stop accepting handwritten forms, so the model only processes typed claims",
+      "Consolidate complaint channels, so the complaints team can respond faster",
+      "Retrain the model daily, so it adapts to new handwriting without feedback",
     ],
-    correctIndex: 2,
+    correctIndex: 0,
     explanation:
-      'Complaints are an important signal about real-world failures. Connecting them to model owners, monitoring, and incident processes closes the loop so problems are investigated and fixed.',
+      "Complaints are an important signal of real-world failures; connecting them to model owners and monitoring closes the loop so problems are investigated and fixed. Changing intake or retraining blindly does not address the missing feedback path.",
   },
   {
     id: 'aigp-governance-39',
     domainId: 'aigp-governance',
     prompt:
-      "Business leaders complain that AI governance is slowing experimentation. Which approach best balances innovation with risk management?",
+      "Business leaders say AI governance is slowing experimentation. Which approach best balances innovation and risk?",
     choices: [
-      'Suspend governance for all experiments until they are ready for customers',
-      'Approve only projects that the governance team confirms carry zero risk',
-      'Let each business team decide for itself whether governance applies to its work',
-      'A controlled sandbox with pre-approved data and lighter review for low-risk tests',
+      "Suspend governance review for experiments, and apply it at production launch instead",
+      "Approve experiments once the governance team confirms they carry no meaningful risk",
+      "Let each business team decide for itself whether governance applies to its work",
+      "A controlled sandbox with pre-approved data and lighter review for low-risk tests",
     ],
     correctIndex: 3,
     explanation:
-      'Internal sandboxes and tiered review let teams experiment quickly within guardrails, with fuller review before production or higher-risk use. Suspending governance or leaving it to each team invites unmanaged risk, and zero-risk projects do not exist.',
+      "Internal sandboxes and tiered review allow fast experimentation within guardrails, with fuller review before production or higher-risk use. Suspending governance or self-selection invites unmanaged risk, and zero-risk projects do not exist.",
   },
   {
     id: 'aigp-governance-40',
     domainId: 'aigp-governance',
     prompt:
-      "An AI governance program has well-written policies, but executives routinely override them to hit launch dates. What is the most fundamental weakness?",
+      "An AI governance program has well-written policies, but executives routinely override them to meet launch dates. What is the most fundamental weakness?",
     choices: [
-      'Leadership culture that does not support governance',
-      'The policies are too short to cover every situation',
-      'The AI models are too large and complex to govern',
-      'The company has too few AI tools to justify governance',
+      "The policies are too long and detailed for busy executives to apply consistently in practice",
+      "The review process has no service-level targets, so launches are delayed",
+      "Leadership does not support governance in practice, so staff treat policies as optional",
+      "The governance team reports to legal rather than to technology leadership",
     ],
-    correctIndex: 0,
+    correctIndex: 2,
     explanation:
-      'Tone at the top determines whether governance is followed in practice. If leaders bypass controls, staff learn that the policies are optional, whatever the documents say.',
+      "Tone at the top decides whether governance is followed. When leaders bypass controls, staff learn the policies are optional, whatever the documents say.",
   },
 ]
